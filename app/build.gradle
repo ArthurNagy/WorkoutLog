@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion build_versions.compile_sdk
+    defaultConfig {
+        applicationId "com.arthurnagy.workoutlog"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+kapt {
+    correctErrorTypes = true
+    javacOptions {
+        option("-Xmaxerrs", 1000)
+    }
+}
+
+dependencies {
+    implementation project(":backdrop")
+
+    implementation deps.kotlin.stdlib
+
+    // Support Libraries
+    implementation deps.support.app_compat
+    implementation deps.support.core_ktx
+    implementation deps.support.recyclerview
+    implementation deps.support.design
+    implementation deps.constraint_layout
+
+    // Architecture components
+    implementation deps.lifecycle.extensions
+    implementation deps.lifecycle.viewmodel_ktx
+    kapt deps.lifecycle.compiler
+
+    // Firebase
+    implementation deps.firebase.database
+    implementation deps.firebase.auth
+    implementation deps.play_services.auth
+
+    // Dagger
+    implementation deps.dagger.runtime
+    implementation deps.dagger.android_support
+    kapt deps.dagger.compiler
+    kapt deps.dagger.android_support_compiler
+
+//    // Navigation
+//    implementation deps.navigation.ui
+//    implementation deps.navigation.runtime
+//    implementation deps.navigation.fragment
+//    implementation deps.navigation.ui_ktx
+//    implementation deps.navigation.runtime_ktx
+//    implementation deps.navigation.fragment_ktx
+
+    implementation deps.calendar_view
+}
+
+apply plugin: 'com.google.gms.google-services'
