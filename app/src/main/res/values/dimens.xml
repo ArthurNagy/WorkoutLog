@@ -3,4 +3,13 @@
     <dimen name="day_view_height">72dp</dimen>
     <dimen name="fab_size">56dp</dimen>
     <dimen name="fab_corner_radius">28dp</dimen>
+    <dimen name="bottom_sheet_corner_radius">16dp</dimen>
+    <dimen name="bottom_sheet_top_padding">8dp</dimen>
+    <dimen name="avatar_size">40dp</dimen>
+
+    <dimen name="first_keyline">16dp</dimen>
+
+    <dimen name="content_margin">8dp</dimen>
+    <dimen name="second_keyline">24dp</dimen>
+    <dimen name="third_keyline">72dp</dimen>
 </resources>

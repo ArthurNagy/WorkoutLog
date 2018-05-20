@@ -5,15 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.arthurnagy.workoutlog.MainBinding
 import com.arthurnagy.workoutlog.R
+import com.arthurnagy.workoutlog.feature.account.AccountFragment
 
 class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         DataBindingUtil.setContentView<MainBinding>(this, R.layout.activity_home)?.also {
-            setSupportActionBar(it.toolbar)
+            setSupportActionBar(it.bottomAppBar)
             supportActionBar?.setDisplayShowTitleEnabled(false)
-
+            it.bottomAppBar.setNavigationOnClickListener {
+                AccountFragment().show(supportFragmentManager, "AccountFragment")
+            }
         }
     }
 

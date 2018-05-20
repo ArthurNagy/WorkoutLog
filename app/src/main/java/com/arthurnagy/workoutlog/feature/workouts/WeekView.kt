@@ -1,4 +1,4 @@
-package com.arthurnagy.workoutlog.feature
+package com.arthurnagy.workoutlog.feature.workouts
 
 import android.content.Context
 import android.util.AttributeSet

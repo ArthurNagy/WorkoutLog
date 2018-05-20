@@ -67,6 +67,8 @@ deps.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.c
 
 deps.calendar_view = "com.github.prolificinteractive:material-calendarview:$versions.calendar_view"
 
+deps.databinding_compiler = "androidx.databinding:databinding-compiler:$versions.android_gradle_plugin:"
+
 ext.deps = deps
 
 def build_versions = [:]

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--suppress AndroidUnknownAttribute -->
+    <data class=".AccountBinding">
+
+        <variable
+            name="viewModel"
+            type="com.arthurnagy.workoutlog.feature.account.AccountViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/content_margin"
+            android:layout_marginStart="@dimen/third_keyline"
+            app:buttonSize="wide"
+            app:colorScheme="light"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/user_avatar"
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
+            android:layout_marginStart="@dimen/second_keyline"
+            android:contentDescription="@string/content_desc_user_avatar"
+            app:layout_constraintBottom_toBottomOf="@id/sign_in_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/sign_in_button"
+            app:srcCompat="@drawable/ic_account_circle_24dp" />
+
+        <View
+            android:id="@+id/divider_history"
+            style="@style/BottomSheetEntryDivider"
+            android:layout_marginTop="@dimen/first_keyline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sign_in_button" />
+
+        <TextView
+            android:id="@+id/show_workouts_history"
+            style="@style/BottomSheetEntry"
+            android:drawableStart="@drawable/ic_history_24dp"
+            android:text="@string/view_workouts_history"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_history" />
+
+        <View
+            android:id="@+id/divider_settings"
+            style="@style/BottomSheetEntryDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/show_workouts_history" />
+
+        <TextView
+            android:id="@+id/settings"
+            style="@style/BottomSheetEntry"
+            android:drawableStart="@drawable/ic_settings_24dp"
+            android:text="@string/settings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_settings" />
+
+        <View
+            android:id="@+id/divider_feedback"
+            style="@style/BottomSheetEntryDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settings" />
+
+        <TextView
+            android:id="@+id/send_feedback"
+            style="@style/BottomSheetEntry"
+            android:drawableStart="@drawable/ic_feedback_24dp"
+            android:text="@string/send_feedback"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_feedback" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+

@@ -67,6 +67,8 @@ dependencies {
 //    implementation deps.navigation.fragment_ktx
 
     implementation deps.calendar_view
+
+    kapt deps.databinding_compiler
 }
 
 apply plugin: 'com.google.gms.google-services'
