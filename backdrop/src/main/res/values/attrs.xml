@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="BackLayerSiblingBehavior">
-        <attr name="behavior_expandedContentDescription" format="string" />
-    </declare-styleable>
-</resources>

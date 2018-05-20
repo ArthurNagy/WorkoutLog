@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">Backdrop</string>
-
-    <string name="design_backlayer_sibling_behavior">com.arthurnagy.backdrop.BackLayerSiblingBehavior</string>
-    <string name="design_backlayer_expanded_content_layer_content_description">Close the back layer</string>
-</resources>

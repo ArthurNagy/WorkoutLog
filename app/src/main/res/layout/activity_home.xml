@@ -9,7 +9,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feature.MainActivity">
+        tools:context=".feature.HomeActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
@@ -56,19 +56,20 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="4dp"
-            app:layout_anchor="@id/bottom_app_bar"
-            android:background="@drawable/top_elevation" />
+            android:background="@drawable/top_elevation"
+            app:layout_anchor="@id/bottom_app_bar" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/workout_button"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/fab_size"
-            app:iconTint="@android:color/white"
-            app:cornerRadius="@dimen/fab_corner_radius"
-            app:layout_anchor="@id/bottom_app_bar"
-            app:layout_anchorGravity="center_horizontal|top"
-            android:textAllCaps="false"
             android:text="@string/start_workout"
-            app:icon="@drawable/ic_add_24dp" />
+            android:textAllCaps="false"
+            app:cornerRadius="@dimen/fab_corner_radius"
+            app:icon="@drawable/ic_add_24dp"
+            app:iconTint="@android:color/white"
+            app:layout_anchor="@id/bottom_app_bar"
+            app:layout_anchorGravity="center_horizontal|top" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

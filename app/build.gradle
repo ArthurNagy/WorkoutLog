@@ -33,8 +33,6 @@ kapt {
 }
 
 dependencies {
-    implementation project(":backdrop")
-
     implementation deps.kotlin.stdlib
 
     // Support Libraries
