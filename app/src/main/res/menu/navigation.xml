@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2018 Halcyon Mobile
+  ~ http://www.halcyonmobile.com
+  ~ All rights reserved.
+  -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/workouts_history"
+            android:icon="@drawable/ic_history_24dp"
+            android:title="@string/view_workouts_history" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_settings_24dp"
+            android:title="@string/settings" />
+        <item
+            android:id="@+id/feedback"
+            android:icon="@drawable/ic_feedback_24dp"
+            android:title="@string/send_feedback" />
+    </group>
+</menu>

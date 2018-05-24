@@ -26,17 +26,6 @@
 
     <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
 
-    <style name="BottomSheetEntry">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">56dp</item>
-        <item name="android:background">?attr/selectableItemBackground</item>
-        <item name="android:drawablePadding">@dimen/second_keyline</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:paddingEnd">@dimen/second_keyline</item>
-        <item name="android:paddingStart">@dimen/second_keyline</item>
-        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle2</item>
-    </style>
-
     <style name="BottomSheetEntryDivider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
