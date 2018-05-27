@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!--suppress AndroidUnknownAttribute -->
-    <data class=".AccountBinding">
+    <data class=".AccountMenuBinding">
 
         <variable
             name="viewModel"
-            type="com.arthurnagy.workoutlog.feature.account.AccountViewModel" />
+            type="com.arthurnagy.workoutlog.feature.account.AccountMenuViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

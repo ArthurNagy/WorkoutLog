@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.arthurnagy.workoutlog.MainBinding
 import com.arthurnagy.workoutlog.R
-import com.arthurnagy.workoutlog.feature.account.AccountFragment
+import com.arthurnagy.workoutlog.feature.account.AccountMenuFragment
 
 class HomeActivity : AppCompatActivity() {
 
@@ -15,7 +15,7 @@ class HomeActivity : AppCompatActivity() {
             setSupportActionBar(it.bottomAppBar)
             supportActionBar?.setDisplayShowTitleEnabled(false)
             it.bottomAppBar.setNavigationOnClickListener {
-                AccountFragment().show(supportFragmentManager, "AccountFragment")
+                AccountMenuFragment().also { it.show(supportFragmentManager, it.tag) }
             }
         }
     }

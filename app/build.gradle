@@ -1,13 +1,14 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion build_versions.compile_sdk
+    compileSdkVersion rootProject.compile_sdk
     defaultConfig {
         applicationId "com.arthurnagy.workoutlog"
-        minSdkVersion build_versions.min_sdk
-        targetSdkVersion build_versions.target_sdk
+        minSdkVersion rootProject.min_sdk
+        targetSdkVersion rootProject.target_sdk
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -25,6 +26,16 @@ android {
     }
 }
 
+androidExtensions {
+    experimental = true
+}
+
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
+}
+
 kapt {
     correctErrorTypes = true
     javacOptions {
@@ -32,43 +43,48 @@ kapt {
     }
 }
 
+ext {
+    constraint_layout = "1.1.0"
+    calendar_view = "1.5.0"
+    support = '1.0.0-alpha1'
+    lifecycle = '2.0.0-alpha1'
+    dagger = "2.16"
+    firebase = "16.0.1"
+    play_services = "15.0.1"
+    coroutines = "0.22.5"
+}
+
 dependencies {
-    implementation deps.kotlin.stdlib
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
 
     // Support Libraries
-    implementation deps.support.app_compat
-    implementation deps.support.core_ktx
-    implementation deps.support.recyclerview
-    implementation deps.support.design
-    implementation deps.constraint_layout
+    implementation "androidx.appcompat:appcompat:$support"
+    implementation "androidx.core:core-ktx:$support"
+    implementation "androidx.recyclerview:recyclerview:$support"
+    implementation "com.google.android.material:material:$support"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout"
 
     // Architecture components
-    implementation deps.lifecycle.extensions
-    implementation deps.lifecycle.viewmodel_ktx
-    kapt deps.lifecycle.compiler
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle"
 
     // Firebase
-    implementation deps.firebase.database
-    implementation deps.firebase.auth
-    implementation deps.play_services.auth
+    implementation "com.google.firebase:firebase-database:$firebase"
+    implementation "com.google.firebase:firebase-auth:$firebase"
+    implementation "com.google.android.gms:play-services-auth:$play_services"
 
     // Dagger
-    implementation deps.dagger.runtime
-    implementation deps.dagger.android_support
-    kapt deps.dagger.compiler
-    kapt deps.dagger.android_support_compiler
+    implementation "com.google.dagger:dagger:$dagger"
+    implementation "com.google.dagger:dagger-android-support:$dagger"
+    kapt "com.google.dagger:dagger-compiler:$dagger"
+    kapt "com.google.dagger:dagger-android-processor:$dagger"
 
-//    // Navigation
-//    implementation deps.navigation.ui
-//    implementation deps.navigation.runtime
-//    implementation deps.navigation.fragment
-//    implementation deps.navigation.ui_ktx
-//    implementation deps.navigation.runtime_ktx
-//    implementation deps.navigation.fragment_ktx
+    implementation "com.github.prolificinteractive:material-calendarview:$calendar_view"
 
-    implementation deps.calendar_view
-
-    kapt deps.databinding_compiler
+    kapt "androidx.databinding:databinding-compiler:$android_gradle_plugin"
 }
 
 apply plugin: 'com.google.gms.google-services'

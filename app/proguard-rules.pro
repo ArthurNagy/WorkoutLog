@@ -30,3 +30,6 @@
 #-keepclassmembers class com.yourcompany.models.** {
 #  *;
 #}
+-keepclassmembernames class kotlinx.** {
+    volatile <fields>;
+}
