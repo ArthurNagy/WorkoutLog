@@ -33,3 +33,7 @@
 -keepclassmembernames class kotlinx.** {
     volatile <fields>;
 }
+
+-keepclassmembers class com.arthurnagy.workoutlog.core.model.** {
+  *;
+}

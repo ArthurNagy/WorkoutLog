@@ -7,4 +7,8 @@ import kotlinx.android.parcel.Parcelize
 data class Routine(
     val id: Int
 //TODO: add necessary fields
-) : Parcelable
+) : Parcelable {
+    companion object {
+        const val REFERENCE = "routine"
+    }
+}

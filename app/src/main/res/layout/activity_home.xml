@@ -9,7 +9,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feature.HomeActivity">
+        tools:context=".feature.home.HomeActivity">
 
         <fragment
             android:id="@+id/my_workouts"

@@ -7,4 +7,8 @@ import kotlinx.android.parcel.Parcelize
 data class User(
     val id: String,
     val profilePictureUrl: String
-) : Parcelable
+) : Parcelable {
+    companion object {
+        const val REFERENCE = "user"
+    }
+}

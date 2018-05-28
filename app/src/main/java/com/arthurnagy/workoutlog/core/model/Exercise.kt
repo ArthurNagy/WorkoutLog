@@ -11,4 +11,8 @@ data class Exercise(
     val muscleIds: List<Int>,
     val secondaryMuscleIds: List<Int>?,
     val name: String
-) : Parcelable
+) : Parcelable {
+    companion object {
+        const val REFERENCE = "exercise"
+    }
+}
