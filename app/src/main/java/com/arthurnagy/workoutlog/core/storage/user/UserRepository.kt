@@ -11,7 +11,8 @@ class UserRepository @Inject constructor(private val userRemoteSource: UserRemot
 
     private var user: User? = null
 
-    suspend fun createUser(authenticationCredential: AuthCredential) = userRemoteSource.createUser(authenticationCredential)
+    suspend fun createUser(authenticationCredential: AuthCredential) =
+        userRemoteSource.createUser(authenticationCredential).also { if (it is Result.Success) user = it.data }
 
     suspend fun getUser() = user?.let { Result.Success(it) } ?: userRemoteSource.getUser().also { if (it is Result.Success) user = it.data }
 

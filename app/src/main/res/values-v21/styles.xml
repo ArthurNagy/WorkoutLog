@@ -6,8 +6,4 @@
         <item name="android:navigationBarColor">@color/primary</item>
     </style>
 
-    <style name="TextAppearanceMedium" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:fontFamily">sans-serif-medium</item>
-    </style>
-
 </resources>

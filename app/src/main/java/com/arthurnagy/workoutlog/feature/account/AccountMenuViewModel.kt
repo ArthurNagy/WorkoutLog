@@ -15,10 +15,9 @@ import javax.inject.Inject
 class AccountMenuViewModel @Inject constructor(private val userRepository: UserRepository) : WorkoutLogViewModel() {
 
     val user = ObservableField<User>()
-    val isUserLoggedIn = ObservableField<Boolean>(false)
+    val isUserLoggedIn = ObservableField<Boolean>(false).dependsOn(user) { it != null }
 
     init {
-        isUserLoggedIn.dependsOn(user) { it != null }
         launch(UI) {
             val userResult = userRepository.getUser()
             when (userResult) {
@@ -32,7 +31,7 @@ class AccountMenuViewModel @Inject constructor(private val userRepository: UserR
         launch(UI) {
             val result = userRepository.createUser(authCredential)
             when (result) {
-                is Result.Success -> Log.d("AccountMenuViewModel", "user: ${result.data}")
+                is Result.Success -> user.set(result.data)
                 is Result.Error -> Log.d("AccountMenuViewModel", "error: ${result.exception}")
             }
         }
