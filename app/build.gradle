@@ -46,9 +46,10 @@ kapt {
 ext {
     constraint_layout = "1.1.0"
     calendar_view = "1.5.0"
-    support = '1.0.0-alpha1'
+    androidx = '1.0.0-alpha1'
     lifecycle = '2.0.0-alpha1'
     dagger = "2.16"
+    glide = "4.7.1"
     firebase = "16.0.1"
     play_services = "15.0.1"
     coroutines = "0.22.5"
@@ -60,10 +61,10 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
 
     // Support Libraries
-    implementation "androidx.appcompat:appcompat:$support"
-    implementation "androidx.core:core-ktx:$support"
-    implementation "androidx.recyclerview:recyclerview:$support"
-    implementation "com.google.android.material:material:$support"
+    implementation "androidx.appcompat:appcompat:$androidx"
+    implementation "androidx.core:core-ktx:$androidx"
+    implementation "androidx.recyclerview:recyclerview:$androidx"
+    implementation "com.google.android.material:material:$androidx"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout"
 
     // Architecture components
@@ -81,6 +82,10 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger"
     kapt "com.google.dagger:dagger-compiler:$dagger"
     kapt "com.google.dagger:dagger-android-processor:$dagger"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glide"
+    kapt "com.github.bumptech.glide:compiler:$glide"
 
     implementation "com.github.prolificinteractive:material-calendarview:$calendar_view"
 

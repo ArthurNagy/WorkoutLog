@@ -8,6 +8,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import dagger.Module
 import dagger.Provides
@@ -16,6 +17,8 @@ import javax.inject.Named
 
 @Module
 object AppModule {
+
+    private const val DB = "database"
 
     @JvmStatic
     @Provides
@@ -40,48 +43,49 @@ object AppModule {
     @JvmStatic
     @Provides
     @Reusable
-    fun provideFirebaseDatabase() = FirebaseDatabase.getInstance()
+    @Named(DB)
+    fun provideFirebaseDatabase() = FirebaseDatabase.getInstance().reference
 
     @JvmStatic
     @Provides
     @Reusable
     @Named(User.REFERENCE)
-    fun provideUserDatabaseReference(firebaseDatabase: FirebaseDatabase) = firebaseDatabase.getReference(User.REFERENCE)
+    fun provideUserDatabaseReference(@Named(DB) databaseReference: DatabaseReference) = databaseReference.child(User.REFERENCE)
 
     @JvmStatic
     @Provides
     @Reusable
     @Named(Workout.REFERENCE)
-    fun provideWorkoutDatabaseReference(firebaseDatabase: FirebaseDatabase) = firebaseDatabase.getReference(Workout.REFERENCE)
+    fun provideWorkoutDatabaseReference(@Named(DB) databaseReference: DatabaseReference) = databaseReference.child(Workout.REFERENCE)
 
     @JvmStatic
     @Provides
     @Reusable
     @Named(Routine.REFERENCE)
-    fun provideRoutineDatabaseReference(firebaseDatabase: FirebaseDatabase) = firebaseDatabase.getReference(Routine.REFERENCE)
+    fun provideRoutineDatabaseReference(@Named(DB) databaseReference: DatabaseReference) = databaseReference.child(Routine.REFERENCE)
 
     @JvmStatic
     @Provides
     @Reusable
     @Named(Exercise.REFERENCE)
-    fun provideExerciseDatabaseReference(firebaseDatabase: FirebaseDatabase) = firebaseDatabase.getReference(Exercise.REFERENCE)
+    fun provideExerciseDatabaseReference(@Named(DB) databaseReference: DatabaseReference) = databaseReference.child(Exercise.REFERENCE)
 
     @JvmStatic
     @Provides
     @Reusable
     @Named(GenericData.CATEGORY_REFERENCE)
-    fun provideCategoryDatabaseReference(firebaseDatabase: FirebaseDatabase) = firebaseDatabase.getReference(GenericData.CATEGORY_REFERENCE)
+    fun provideCategoryDatabaseReference(@Named(DB) databaseReference: DatabaseReference) = databaseReference.child(GenericData.CATEGORY_REFERENCE)
 
     @JvmStatic
     @Provides
     @Reusable
     @Named(GenericData.EQUIPMENT_REFERENCE)
-    fun provideEquipmentDatabaseReference(firebaseDatabase: FirebaseDatabase) = firebaseDatabase.getReference(GenericData.EQUIPMENT_REFERENCE)
+    fun provideEquipmentDatabaseReference(@Named(DB) databaseReference: DatabaseReference) = databaseReference.child(GenericData.EQUIPMENT_REFERENCE)
 
     @JvmStatic
     @Provides
     @Reusable
     @Named(GenericData.MUSCLE_REFERENCE)
-    fun provideMuscleDatabaseReference(firebaseDatabase: FirebaseDatabase) = firebaseDatabase.getReference(GenericData.MUSCLE_REFERENCE)
+    fun provideMuscleDatabaseReference(@Named(DB) databaseReference: DatabaseReference) = databaseReference.child(GenericData.MUSCLE_REFERENCE)
 
 }

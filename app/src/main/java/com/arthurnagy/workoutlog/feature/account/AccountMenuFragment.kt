@@ -38,8 +38,12 @@ class AccountMenuFragment : RoundedBottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = provideViewModel(viewModelFactory)
-        binding.viewModel = viewModel
+        binding.setLifecycleOwner(viewLifecycleOwner)
+        provideViewModel<AccountMenuViewModel>(viewModelFactory).also {
+            viewModel = it
+            binding.viewModel = it
+        }
+
         binding.signInButton.setOnClickListener {
             startActivityForResult(googleSignInClient.signInIntent, RC_SIGN_IN)
         }
@@ -55,7 +59,6 @@ class AccountMenuFragment : RoundedBottomSheetDialogFragment() {
                 viewModel.signIn(GoogleAuthProvider.getCredential(account.idToken, null))
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
-
             }
         }
     }
