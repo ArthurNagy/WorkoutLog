@@ -10,6 +10,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.Logger
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -44,7 +45,10 @@ object AppModule {
     @Provides
     @Reusable
     @Named(DB)
-    fun provideFirebaseDatabase() = FirebaseDatabase.getInstance().reference
+    fun provideFirebaseDatabase() = FirebaseDatabase.getInstance().apply {
+        setPersistenceEnabled(true)
+        setLogLevel(Logger.Level.DEBUG)
+    }.reference
 
     @JvmStatic
     @Provides

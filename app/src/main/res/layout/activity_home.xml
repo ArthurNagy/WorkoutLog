@@ -26,7 +26,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="4dp"
+            android:layout_height="@dimen/bottom_app_bar_fake_elevation_height"
             android:background="@drawable/top_elevation"
             app:layout_anchor="@id/bottom_app_bar" />
 
@@ -38,9 +38,10 @@
             android:textAllCaps="false"
             app:cornerRadius="@dimen/fab_corner_radius"
             app:icon="@drawable/ic_add_24dp"
-            app:iconTint="@android:color/white"
+            app:iconTint="@color/primary"
             app:layout_anchor="@id/bottom_app_bar"
-            app:layout_anchorGravity="center_horizontal|top" />
+            app:layout_anchorGravity="center_horizontal|top"
+            app:textAllCaps="false" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

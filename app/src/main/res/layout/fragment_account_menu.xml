@@ -11,18 +11,18 @@
             type="com.arthurnagy.workoutlog.feature.account.AccountMenuViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.Guideline
+        <androidx.constraintlayout.Guideline
             android:id="@+id/header_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="@dimen/account_header_size" />
 
-        <androidx.constraintlayout.widget.Guideline
+        <androidx.constraintlayout.Guideline
             android:id="@+id/third_keyline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,6 +44,7 @@
             app:layout_constraintBottom_toBottomOf="@id/header_bottom"
             app:layout_constraintStart_toEndOf="@id/third_keyline"
             app:layout_constraintTop_toTopOf="parent"
+            app:textAllCaps="false"
             tools:visibility="gone" />
 
         <ImageView
@@ -78,12 +79,12 @@
             app:layout_constraintTop_toBottomOf="@id/user_name"
             tools:text="arthur.93.nagy@gmail.com" />
 
-        <androidx.constraintlayout.widget.Group
+        <androidx.constraintlayout.Group
             android:id="@+id/user_data_group"
+            goneIf="@{!viewModel.isUserLoggedIn}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:constraint_referenced_ids="user_name, user_email"
-            app:goneIf="@{!viewModel.isUserLoggedIn}"
             tools:visibility="visible" />
 
         <View
@@ -101,7 +102,7 @@
             app:layout_constraintTop_toBottomOf="@id/divider_history"
             app:menu="@menu/navigation" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.ConstraintLayout>
 
 </layout>
 

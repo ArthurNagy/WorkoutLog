@@ -44,9 +44,9 @@ kapt {
 }
 
 ext {
-    constraint_layout = "1.1.0"
+    constraint_layout = "1.1.1"
     calendar_view = "1.5.0"
-    androidx = '1.0.0-alpha1'
+    androidx = '1.0.0-alpha3'
     lifecycle = '2.0.0-alpha1'
     dagger = "2.16"
     glide = "4.7.1"
