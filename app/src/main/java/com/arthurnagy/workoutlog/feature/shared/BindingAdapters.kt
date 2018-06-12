@@ -2,7 +2,7 @@ package com.arthurnagy.workoutlog.feature.shared
 
 import android.view.View
 import android.widget.ImageView
-import androidx.constraintlayout.Group
+import androidx.constraintlayout.widget.Group
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions

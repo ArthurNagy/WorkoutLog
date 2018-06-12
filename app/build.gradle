@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
+    buildToolsVersion build_tools
     compileSdkVersion rootProject.compile_sdk
     defaultConfig {
         applicationId "com.arthurnagy.workoutlog"
@@ -44,7 +45,7 @@ kapt {
 }
 
 ext {
-    constraint_layout = "1.1.1"
+    constraint_layout = "1.1.2"
     calendar_view = "1.5.0"
     androidx = '1.0.0-alpha3'
     lifecycle = '2.0.0-alpha1'
