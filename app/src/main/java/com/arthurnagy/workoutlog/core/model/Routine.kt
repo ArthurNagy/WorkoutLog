@@ -9,6 +9,6 @@ data class Routine(
 //TODO: add necessary fields
 ) : Parcelable {
     companion object {
-        const val REFERENCE = "routine"
+        const val REFERENCE = "routines"
     }
 }

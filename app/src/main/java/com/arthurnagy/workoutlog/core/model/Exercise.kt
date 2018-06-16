@@ -13,6 +13,6 @@ data class Exercise(
     val name: String
 ) : Parcelable {
     companion object {
-        const val REFERENCE = "exercise"
+        const val REFERENCE = "exercises"
     }
 }

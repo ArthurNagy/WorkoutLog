@@ -22,6 +22,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/main.kotlin_module'
+    }
     dataBinding {
         enabled = true
     }
@@ -51,9 +54,7 @@ ext {
     lifecycle = '2.0.0-alpha1'
     dagger = "2.16"
     glide = "4.7.1"
-    firebase = "16.0.1"
-    play_services = "15.0.1"
-    coroutines = "0.22.5"
+    coroutines = "0.23.2"
 }
 
 dependencies {
@@ -74,9 +75,10 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle"
 
     // Firebase
-    implementation "com.google.firebase:firebase-database:$firebase"
-    implementation "com.google.firebase:firebase-auth:$firebase"
-    implementation "com.google.android.gms:play-services-auth:$play_services"
+    implementation 'com.google.firebase:firebase-core:16.0.0'
+    implementation 'com.google.firebase:firebase-firestore:17.0.1'
+    implementation "com.google.firebase:firebase-auth:16.0.1"
+    implementation "com.google.android.gms:play-services-auth:15.0.1"
 
     // Dagger
     implementation "com.google.dagger:dagger:$dagger"

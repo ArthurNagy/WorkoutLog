@@ -8,9 +8,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.Logger
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -18,8 +17,6 @@ import javax.inject.Named
 
 @Module
 object AppModule {
-
-    private const val DB = "database"
 
     @JvmStatic
     @Provides
@@ -44,52 +41,48 @@ object AppModule {
     @JvmStatic
     @Provides
     @Reusable
-    @Named(DB)
-    fun provideFirebaseDatabase() = FirebaseDatabase.getInstance().apply {
-        setPersistenceEnabled(true)
-        setLogLevel(Logger.Level.DEBUG)
-    }.reference
+    fun provideFirebaseFirestore(): FirebaseFirestore = FirebaseFirestore.getInstance()
 
     @JvmStatic
     @Provides
     @Reusable
     @Named(User.REFERENCE)
-    fun provideUserDatabaseReference(@Named(DB) databaseReference: DatabaseReference) = databaseReference.child(User.REFERENCE)
+    fun provideUserFirestoreCollection(firestore: FirebaseFirestore): CollectionReference = firestore.collection(User.REFERENCE)
 
     @JvmStatic
     @Provides
     @Reusable
     @Named(Workout.REFERENCE)
-    fun provideWorkoutDatabaseReference(@Named(DB) databaseReference: DatabaseReference) = databaseReference.child(Workout.REFERENCE)
+    fun provideWorkoutFirestoreCollection(firestore: FirebaseFirestore): CollectionReference = firestore.collection(Workout.REFERENCE)
 
     @JvmStatic
     @Provides
     @Reusable
     @Named(Routine.REFERENCE)
-    fun provideRoutineDatabaseReference(@Named(DB) databaseReference: DatabaseReference) = databaseReference.child(Routine.REFERENCE)
+    fun provideRoutineFirestoreCollection(firestore: FirebaseFirestore): CollectionReference = firestore.collection(Routine.REFERENCE)
 
     @JvmStatic
     @Provides
     @Reusable
     @Named(Exercise.REFERENCE)
-    fun provideExerciseDatabaseReference(@Named(DB) databaseReference: DatabaseReference) = databaseReference.child(Exercise.REFERENCE)
+    fun provideExerciseFirestoreCollection(firestore: FirebaseFirestore): CollectionReference = firestore.collection(Exercise.REFERENCE)
 
     @JvmStatic
     @Provides
     @Reusable
     @Named(GenericData.CATEGORY_REFERENCE)
-    fun provideCategoryDatabaseReference(@Named(DB) databaseReference: DatabaseReference) = databaseReference.child(GenericData.CATEGORY_REFERENCE)
+    fun provideCategoryFirestoreCollection(firestore: FirebaseFirestore): CollectionReference = firestore.collection(GenericData.CATEGORY_REFERENCE)
 
     @JvmStatic
     @Provides
     @Reusable
     @Named(GenericData.EQUIPMENT_REFERENCE)
-    fun provideEquipmentDatabaseReference(@Named(DB) databaseReference: DatabaseReference) = databaseReference.child(GenericData.EQUIPMENT_REFERENCE)
+    fun provideEquipmentFirestoreCollection(firestore: FirebaseFirestore): CollectionReference = firestore.collection(GenericData.EQUIPMENT_REFERENCE)
 
     @JvmStatic
     @Provides
     @Reusable
     @Named(GenericData.MUSCLE_REFERENCE)
-    fun provideMuscleDatabaseReference(@Named(DB) databaseReference: DatabaseReference) = databaseReference.child(GenericData.MUSCLE_REFERENCE)
+    fun provideMuscleFirestoreCollection(firestore: FirebaseFirestore): CollectionReference = firestore.collection(GenericData.MUSCLE_REFERENCE)
 
 }

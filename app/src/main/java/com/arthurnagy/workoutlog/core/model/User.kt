@@ -9,6 +9,6 @@ data class User(
     val profilePictureUrl: String = ""
 ) {
     companion object {
-        const val REFERENCE = "user"
+        const val REFERENCE = "users"
     }
 }

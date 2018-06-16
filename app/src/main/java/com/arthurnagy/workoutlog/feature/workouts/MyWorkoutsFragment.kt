@@ -12,9 +12,7 @@ class MyWorkoutsFragment : Fragment() {
     private lateinit var binding: MyWorkoutsBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return MyWorkoutsBinding.inflate(inflater, container, false).also {
-            binding = it
-        }.root
+        return MyWorkoutsBinding.inflate(inflater, container, false).also { binding = it }.root
     }
 
 }

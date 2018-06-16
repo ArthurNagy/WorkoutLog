@@ -9,6 +9,6 @@ data class Workout(
 //TODO: add necessary fields
 ) : Parcelable {
     companion object {
-        const val REFERENCE = "workout"
+        const val REFERENCE = "workouts"
     }
 }

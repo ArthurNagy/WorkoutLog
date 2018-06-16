@@ -39,7 +39,7 @@ suspend fun <T> Task<T>.await(): T = suspendCoroutine { continuation ->
         if (task.isSuccessful) {
             continuation.resume(task.result)
         } else {
-            continuation.resumeWithException(task.exception!!)
+            continuation.resumeWithException(task.exception ?: Exception("Firebase Task failed to execute"))
         }
     }
 }
