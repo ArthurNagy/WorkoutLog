@@ -39,7 +39,7 @@ object AppModule {
     @JvmStatic
     @Provides
     @Reusable
-    fun provideFirebaseAuth() = FirebaseAuth.getInstance()
+    fun provideFirebaseAuth(): FirebaseAuth = FirebaseAuth.getInstance()
 
     @JvmStatic
     @Provides
