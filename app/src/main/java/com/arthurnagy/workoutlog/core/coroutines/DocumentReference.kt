@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2018 Halcyon Mobile
- * http://www.halcyonmobile.com
- * All rights reserved.
- */
-
 package com.arthurnagy.workoutlog.core.coroutines
 
 import com.google.firebase.firestore.DocumentReference
