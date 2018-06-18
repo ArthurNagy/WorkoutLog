@@ -47,7 +47,7 @@ suspend fun <T> Task<T>.await(): T = suspendCoroutine { continuation ->
 
 suspend fun <T> Task<T>.awaitResult(): Result<T> = wrapIntoResult { this.await() }
 
-private suspend fun <T> getTaskQueryList(task: Task<QuerySnapshot>, type: Class<T>): List<T> = suspendCoroutine { continuation ->
+private suspend fun <T> awaitTaskQueryList(task: Task<QuerySnapshot>, type: Class<T>): List<T> = suspendCoroutine { continuation ->
     task.addOnCompleteListener { task ->
         if (task.isSuccessful) {
             try {
@@ -62,8 +62,8 @@ private suspend fun <T> getTaskQueryList(task: Task<QuerySnapshot>, type: Class<
     }
 }
 
-suspend fun <T> Task<QuerySnapshot>.getList(type: Class<T>): List<T> = getTaskQueryList(this, type)
+suspend fun <T> Task<QuerySnapshot>.awaitList(type: Class<T>): List<T> = awaitTaskQueryList(this, type)
 
-suspend inline fun <reified T> Task<QuerySnapshot>.getList(): List<T> = getList(T::class.java)
+suspend inline fun <reified T> Task<QuerySnapshot>.awaitList(): List<T> = awaitList(T::class.java)
 
-suspend inline fun <reified T> Task<QuerySnapshot>.getListResult(): Result<List<T>> = wrapIntoResult { this.getList<T>() }
+suspend inline fun <reified T> Task<QuerySnapshot>.awaitListResult(): Result<List<T>> = wrapIntoResult { this.awaitList<T>() }

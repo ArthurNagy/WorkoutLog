@@ -6,13 +6,14 @@ import com.google.firebase.firestore.Source
 import kotlin.coroutines.experimental.suspendCoroutine
 
 //region GET
-suspend inline fun <reified T> CollectionReference.getList(source: Source = Source.DEFAULT): List<T> = this.get(source).getList()
+suspend inline fun <reified T> CollectionReference.awaitList(source: Source = Source.DEFAULT): List<T> = this.get(source).awaitList()
 
-suspend inline fun <reified T> CollectionReference.getListResult(source: Source = Source.DEFAULT): Result<List<T>> = wrapIntoResult { this.getList<T>(source) }
+suspend inline fun <reified T> CollectionReference.awaitListResult(source: Source = Source.DEFAULT): Result<List<T>> =
+    wrapIntoResult { this.awaitList<T>(source) }
 //endregion
 
 //region ADD
-suspend fun <T : Any> CollectionReference.addDocument(data: T): DocumentReference = suspendCoroutine { continuation ->
+suspend fun <T : Any> CollectionReference.awaitAdd(data: T): DocumentReference = suspendCoroutine { continuation ->
     this.add(data).addOnCompleteListener { task ->
         if (task.isSuccessful) {
             continuation.resume(task.result)
@@ -22,5 +23,5 @@ suspend fun <T : Any> CollectionReference.addDocument(data: T): DocumentReferenc
     }
 }
 
-suspend fun <T : Any> CollectionReference.addDocumentResult(data: T): Result<DocumentReference> = wrapIntoResult { this.addDocument(data) }
+suspend fun <T : Any> CollectionReference.awaitAddResult(data: T): Result<DocumentReference> = wrapIntoResult { this.awaitAdd(data) }
 //endregion

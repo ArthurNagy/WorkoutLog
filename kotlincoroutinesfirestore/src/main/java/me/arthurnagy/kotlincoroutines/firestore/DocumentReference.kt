@@ -12,7 +12,7 @@ import kotlin.coroutines.experimental.suspendCoroutine
  * @param source
  * @return
  */
-private suspend fun <T> getDocumentValue(document: DocumentReference, type: Class<T>, source: Source = Source.DEFAULT): T =
+private suspend fun <T> awaitDocumentValue(document: DocumentReference, type: Class<T>, source: Source = Source.DEFAULT): T =
     suspendCoroutine { continuation ->
         document.get(source).addOnCompleteListener { task ->
             if (task.isSuccessful) {
@@ -34,24 +34,24 @@ private suspend fun <T> getDocumentValue(document: DocumentReference, type: Clas
  * @return
  * @receiver
  */
-suspend fun <T> DocumentReference.getValue(type: Class<T>, source: Source = Source.DEFAULT): T = getDocumentValue(this, type, source)
+suspend fun <T> DocumentReference.awaitGet(type: Class<T>, source: Source = Source.DEFAULT): T = awaitDocumentValue(this, type, source)
 
 /**
  * @param source
  * @return
  * @receiver
  */
-suspend inline fun <reified T> DocumentReference.getValue(source: Source = Source.DEFAULT): T = this.getValue(T::class.java, source)
+suspend inline fun <reified T> DocumentReference.awaitGet(source: Source = Source.DEFAULT): T = this.awaitGet(T::class.java, source)
 
 
-suspend inline fun <reified T> DocumentReference.getValueResult(source: Source = Source.DEFAULT): Result<T> = wrapIntoResult { this.getValue<T>(source) }
+suspend inline fun <reified T> DocumentReference.awaitGetResult(source: Source = Source.DEFAULT): Result<T> = wrapIntoResult { this.awaitGet<T>(source) }
 //endregion
 
 //region SET
 /**
  *
  */
-suspend fun <T : Any> DocumentReference.setValue(data: T, setOptions: SetOptions? = null): Unit = suspendCoroutine { continuation ->
+suspend fun <T : Any> DocumentReference.awaitSet(data: T, setOptions: SetOptions? = null): Unit = suspendCoroutine { continuation ->
     (if (setOptions == null) this.set(data) else this.set(data, setOptions)).addOnCompleteListener { task ->
         if (task.isSuccessful) {
             continuation.resume(Unit)
@@ -61,23 +61,23 @@ suspend fun <T : Any> DocumentReference.setValue(data: T, setOptions: SetOptions
     }
 }
 
-suspend fun <T : Any> DocumentReference.setValueResult(data: T, setOptions: SetOptions? = null): Result<Unit> =
-    wrapIntoResult { this.setValue(data, setOptions) }
+suspend fun <T : Any> DocumentReference.awaitSetResult(data: T, setOptions: SetOptions? = null): Result<Unit> =
+    wrapIntoResult { this.awaitSet(data, setOptions) }
 
 /**
  *
  */
-suspend fun DocumentReference.setMap(data: Map<String, Any>, setOptions: SetOptions? = null) = setValue(data, setOptions)
+suspend fun DocumentReference.awaitSetMap(data: Map<String, Any>, setOptions: SetOptions? = null) = awaitSet(data, setOptions)
 
-suspend fun DocumentReference.setMapResult(data: Map<String, Any>, setOptions: SetOptions? = null): Result<Unit> =
-    wrapIntoResult { this.setMap(data, setOptions) }
+suspend fun DocumentReference.awaitSetMapResult(data: Map<String, Any>, setOptions: SetOptions? = null): Result<Unit> =
+    wrapIntoResult { this.awaitSetMap(data, setOptions) }
 //endregion
 
 //region UPDATE
 /**
  *
  */
-suspend fun DocumentReference.updateValue(data: Map<String, Any>): Unit = suspendCoroutine { continuation ->
+suspend fun DocumentReference.awaitUpdate(data: Map<String, Any>): Unit = suspendCoroutine { continuation ->
     this.update(data).addOnCompleteListener { task ->
         if (task.isSuccessful) {
             continuation.resume(Unit)
@@ -87,21 +87,21 @@ suspend fun DocumentReference.updateValue(data: Map<String, Any>): Unit = suspen
     }
 }
 
-suspend fun DocumentReference.updateValueResult(data: Map<String, Any>): Result<Unit> = wrapIntoResult { this.updateValue(data) }
+suspend fun DocumentReference.awaitUpdateResult(data: Map<String, Any>): Result<Unit> = wrapIntoResult { this.awaitUpdate(data) }
 
 /**
  *
  */
-suspend fun DocumentReference.updateValue(vararg fields: Pair<String, Any>) = updateValue(fields.toMap())
+suspend fun DocumentReference.awaitUpdate(vararg fields: Pair<String, Any>) = awaitUpdate(fields.toMap())
 
-suspend fun DocumentReference.updateValueResult(vararg fields: Pair<String, Any>) = updateValueResult(fields.toMap())
+suspend fun DocumentReference.awaitUpdateResult(vararg fields: Pair<String, Any>) = awaitUpdateResult(fields.toMap())
 //endregion
 
 //region DELETE
 /**
  *
  */
-suspend fun DocumentReference.deleteValue(): Unit = suspendCoroutine { continuation ->
+suspend fun DocumentReference.awaitDelete(): Unit = suspendCoroutine { continuation ->
     this.delete().addOnCompleteListener { task ->
         if (task.isSuccessful) {
             continuation.resume(Unit)
@@ -111,5 +111,5 @@ suspend fun DocumentReference.deleteValue(): Unit = suspendCoroutine { continuat
     }
 }
 
-suspend fun DocumentReference.deleteValueResult(): Result<Unit> = wrapIntoResult { this.deleteValue() }
+suspend fun DocumentReference.awaitDeleteResult(): Result<Unit> = wrapIntoResult { this.awaitDelete() }
 //endregion

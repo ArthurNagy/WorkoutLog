@@ -6,9 +6,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import dagger.Reusable
 import me.arthurnagy.kotlincoroutines.firestore.Result
+import me.arthurnagy.kotlincoroutines.firestore.awaitGetResult
 import me.arthurnagy.kotlincoroutines.firestore.awaitResult
-import me.arthurnagy.kotlincoroutines.firestore.getValueResult
-import me.arthurnagy.kotlincoroutines.firestore.setValueResult
+import me.arthurnagy.kotlincoroutines.firestore.awaitSetResult
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -30,7 +30,7 @@ class UserRemoteSource @Inject constructor(
                     email = firebaseUser.email,
                     profilePictureUrl = firebaseUser.photoUrl.toString()
                 )
-                val userResult = userCollection.document(user.id).setValueResult(user)
+                val userResult = userCollection.document(user.id).awaitSetResult(user)
                 return when (userResult) {
                     is Result.Success -> Result.Success(user)
                     is Result.Error -> userResult
@@ -41,7 +41,7 @@ class UserRemoteSource @Inject constructor(
     }
 
     suspend fun getUser(): Result<User> = firebaseAuth.currentUser?.let {
-        userCollection.document(it.uid).getValueResult<User>()
+        userCollection.document(it.uid).awaitGetResult<User>()
     } ?: Result.Error(Exception("No logged in user"))
 
 }
