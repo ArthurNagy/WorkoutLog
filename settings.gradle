@@ -1,1 +1,1 @@
-include ':app', ':kotlincoroutinesfirestore'
+include ':app'
