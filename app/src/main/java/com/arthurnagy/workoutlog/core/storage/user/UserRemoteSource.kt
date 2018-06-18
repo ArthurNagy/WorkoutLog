@@ -1,14 +1,14 @@
 package com.arthurnagy.workoutlog.core.storage.user
 
-import com.arthurnagy.workoutlog.core.coroutines.await
-import com.arthurnagy.workoutlog.core.coroutines.getValue
-import com.arthurnagy.workoutlog.core.coroutines.setValue
 import com.arthurnagy.workoutlog.core.model.User
-import com.arthurnagy.workoutlog.core.storage.Result
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import dagger.Reusable
+import me.arthurnagy.kotlincoroutines.firestore.Result
+import me.arthurnagy.kotlincoroutines.firestore.awaitResult
+import me.arthurnagy.kotlincoroutines.firestore.getValueResult
+import me.arthurnagy.kotlincoroutines.firestore.setValueResult
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -20,34 +20,28 @@ class UserRemoteSource @Inject constructor(
 ) {
 
     suspend fun createUser(authenticationCredential: AuthCredential): Result<User> {
-        return try {
-            val authResult = firebaseAuth.signInWithCredential(authenticationCredential).await()
-            val firebaseUser = firebaseAuth.currentUser ?: authResult.user
-            firebaseUser?.let {
+        val authResult = firebaseAuth.signInWithCredential(authenticationCredential).awaitResult()
+        when (authResult) {
+            is Result.Success -> {
+                val firebaseUser = authResult.value.user
                 val user = User(
-                    id = it.uid,
-                    displayName = it.displayName,
-                    email = it.email,
-                    profilePictureUrl = it.photoUrl.toString()
+                    id = firebaseUser.uid,
+                    displayName = firebaseUser.displayName,
+                    email = firebaseUser.email,
+                    profilePictureUrl = firebaseUser.photoUrl.toString()
                 )
-                userCollection.document(user.id).setValue(user)
-                Result.Success(user)
-            } ?: Result.Error(Exception("Couldn't create user"))
-        } catch (exception: Exception) {
-            Result.Error(exception)
+                val userResult = userCollection.document(user.id).setValueResult(user)
+                return when (userResult) {
+                    is Result.Success -> Result.Success(user)
+                    is Result.Error -> userResult
+                }
+            }
+            is Result.Error -> return authResult
         }
     }
 
-    suspend fun getUser(): Result<User> {
-        return try {
-            firebaseAuth.currentUser?.let {
-                val user = userCollection.document(it.uid).getValue<User>()
-                Result.Success(user)
-            } ?: Result.Error(Exception("No logged in user"))
-
-        } catch (exception: Exception) {
-            Result.Error(exception)
-        }
-    }
+    suspend fun getUser(): Result<User> = firebaseAuth.currentUser?.let {
+        userCollection.document(it.uid).getValueResult<User>()
+    } ?: Result.Error(Exception("No logged in user"))
 
 }

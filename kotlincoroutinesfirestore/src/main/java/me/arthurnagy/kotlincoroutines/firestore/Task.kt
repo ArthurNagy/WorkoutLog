@@ -1,4 +1,4 @@
-package com.arthurnagy.workoutlog.core.coroutines
+package me.arthurnagy.kotlincoroutines.firestore
 
 import com.google.android.gms.tasks.Task
 import kotlin.coroutines.experimental.suspendCoroutine
@@ -43,3 +43,5 @@ suspend fun <T> Task<T>.await(): T = suspendCoroutine { continuation ->
         }
     }
 }
+
+suspend fun <T> Task<T>.awaitResult(): Result<T> = wrapIntoResult { this.await() }

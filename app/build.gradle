@@ -54,10 +54,11 @@ ext {
     lifecycle = '2.0.0-alpha1'
     dagger = "2.16"
     glide = "4.7.1"
-    coroutines = "0.23.2"
 }
 
 dependencies {
+    implementation project(":kotlincoroutinesfirestore")
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
@@ -75,8 +76,8 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle"
 
     // Firebase
-    implementation 'com.google.firebase:firebase-core:16.0.0'
-    implementation 'com.google.firebase:firebase-firestore:17.0.1'
+    implementation "com.google.firebase:firebase-core:$firebase_core"
+    implementation "com.google.firebase:firebase-firestore:$firebase_firestore"
     implementation "com.google.firebase:firebase-auth:16.0.1"
     implementation "com.google.android.gms:play-services-auth:15.0.1"
 

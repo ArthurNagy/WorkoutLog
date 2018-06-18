@@ -33,4 +33,7 @@ ext {
     min_sdk = project.hasProperty('minSdkV') ? minSdkV.toInteger() : 19
     target_sdk = 28
     compile_sdk = 28
+    coroutines = "0.23.2"
+    firebase_core = '16.0.1'
+    firebase_firestore = '17.0.1'
 }
