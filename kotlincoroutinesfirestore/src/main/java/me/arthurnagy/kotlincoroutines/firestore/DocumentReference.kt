@@ -16,9 +16,12 @@ private suspend fun <T> getDocumentValue(document: DocumentReference, type: Clas
     suspendCoroutine { continuation ->
         document.get(source).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                task.result.toObject(type)?.let { data ->
-                    continuation.resume(data)
-                } ?: continuation.resumeWithException(Exception("Failed to get document from $document of type: $type"))
+                try {
+                    val data: T? = task.result.toObject(type)
+                    data?.let { continuation.resume(it) } ?: continuation.resumeWithException(Exception("Failed to get document from $document of type: $type"))
+                } catch (exception: Exception) {
+                    continuation.resumeWithException(exception)
+                }
             } else {
                 continuation.resumeWithException(task.exception ?: Exception("Failed to get document from $document of type: $type"))
             }

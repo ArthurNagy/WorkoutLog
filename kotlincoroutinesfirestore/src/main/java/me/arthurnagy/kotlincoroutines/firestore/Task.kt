@@ -1,6 +1,7 @@
 package me.arthurnagy.kotlincoroutines.firestore
 
 import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.QuerySnapshot
 import kotlin.coroutines.experimental.suspendCoroutine
 
 /**
@@ -45,3 +46,24 @@ suspend fun <T> Task<T>.await(): T = suspendCoroutine { continuation ->
 }
 
 suspend fun <T> Task<T>.awaitResult(): Result<T> = wrapIntoResult { this.await() }
+
+private suspend fun <T> getTaskQueryList(task: Task<QuerySnapshot>, type: Class<T>): List<T> = suspendCoroutine { continuation ->
+    task.addOnCompleteListener { task ->
+        if (task.isSuccessful) {
+            try {
+                val data: List<T> = task.result.toObjects(type)
+                continuation.resume(data)
+            } catch (exception: Exception) {
+                continuation.resumeWithException(exception)
+            }
+        } else {
+            continuation.resumeWithException(task.exception ?: Exception("Failed to read task list: $task of type: $type"))
+        }
+    }
+}
+
+suspend fun <T> Task<QuerySnapshot>.getList(type: Class<T>): List<T> = getTaskQueryList(this, type)
+
+suspend inline fun <reified T> Task<QuerySnapshot>.getList(): List<T> = getList(T::class.java)
+
+suspend inline fun <reified T> Task<QuerySnapshot>.getListResult(): Result<List<T>> = wrapIntoResult { this.getList<T>() }
