@@ -8,7 +8,7 @@ import com.arthurnagy.workoutlog.core.storage.user.UserRepository
 import com.arthurnagy.workoutlog.feature.shared.dependsOn
 import com.google.firebase.auth.AuthCredential
 import kotlinx.coroutines.experimental.android.UI
-import me.arthurnagy.kotlincoroutines.firestore.Result
+import me.arthurnagy.kotlincoroutines.Result
 import javax.inject.Inject
 
 class AccountMenuViewModel @Inject constructor(private val userRepository: UserRepository) : WorkoutLogViewModel() {

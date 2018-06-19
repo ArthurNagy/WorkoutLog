@@ -3,7 +3,7 @@ package com.arthurnagy.workoutlog.core.storage.user
 import com.arthurnagy.workoutlog.core.injection.AppScope
 import com.arthurnagy.workoutlog.core.model.User
 import com.google.firebase.auth.AuthCredential
-import me.arthurnagy.kotlincoroutines.firestore.Result
+import me.arthurnagy.kotlincoroutines.Result
 import javax.inject.Inject
 
 @AppScope

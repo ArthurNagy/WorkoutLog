@@ -16,6 +16,10 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
+        debug {
+            minifyEnabled true
+            useProguard false
+        }
         release {
             minifyEnabled true
             shrinkResources true
@@ -79,7 +83,7 @@ dependencies {
     implementation "com.google.firebase:firebase-auth:16.0.1"
     implementation "com.google.android.gms:play-services-auth:15.0.1"
 
-    implementation 'me.arthurnagy.kotlincoroutines:firestore:0.0.1'
+    implementation 'me.arthurnagy.kotlincoroutines:firestore:0.0.3'
 
     // Dagger
     implementation "com.google.dagger:dagger:$dagger"
@@ -92,8 +96,6 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$glide"
 
     implementation "com.github.prolificinteractive:material-calendarview:$calendar_view"
-
-    kapt "androidx.databinding:databinding-compiler:$android_gradle_plugin"
 }
 
 apply plugin: 'com.google.gms.google-services'
