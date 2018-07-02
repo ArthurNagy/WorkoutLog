@@ -1,7 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.2.41"
-    ext.android_gradle_plugin = "3.2.0-alpha18"
+    ext {
+        kotlin_version = "1.2.50"
+        android_gradle_plugin = "3.2.0-beta02"
+    }
     repositories {
         google()
         jcenter()
@@ -33,7 +35,7 @@ ext {
     min_sdk = project.hasProperty('minSdkV') ? minSdkV.toInteger() : 19
     target_sdk = 28
     compile_sdk = 28
-    coroutines = "0.23.2"
+    coroutines = "0.23.3"
     firebase_core = '16.0.1'
-    firebase_firestore = '17.0.1'
+    firebase_firestore = '17.0.2'
 }

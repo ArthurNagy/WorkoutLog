@@ -80,7 +80,7 @@ dependencies {
     // Firebase
     implementation "com.google.firebase:firebase-core:$firebase_core"
     implementation "com.google.firebase:firebase-firestore:$firebase_firestore"
-    implementation "com.google.firebase:firebase-auth:16.0.1"
+    implementation "com.google.firebase:firebase-auth:16.0.2"
     implementation "com.google.android.gms:play-services-auth:15.0.1"
 
     implementation 'me.arthurnagy.kotlincoroutines:firestore:0.0.3'
