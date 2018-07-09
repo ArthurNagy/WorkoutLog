@@ -5,7 +5,7 @@ import androidx.databinding.ObservableField
 import com.arthurnagy.workoutlog.core.WorkoutLogViewModel
 import com.arthurnagy.workoutlog.core.model.User
 import com.arthurnagy.workoutlog.core.storage.user.UserRepository
-import com.arthurnagy.workoutlog.feature.shared.dependsOn
+import com.arthurnagy.workoutlog.feature.shared.dependantObservabelField
 import com.google.firebase.auth.AuthCredential
 import kotlinx.coroutines.experimental.android.UI
 import me.arthurnagy.kotlincoroutines.Result
@@ -14,7 +14,7 @@ import javax.inject.Inject
 class AccountMenuViewModel @Inject constructor(private val userRepository: UserRepository) : WorkoutLogViewModel() {
 
     val user = ObservableField<User>()
-    val isUserLoggedIn = ObservableField<Boolean>(false).dependsOn(user) { it != null }
+    val isUserLoggedIn = dependantObservabelField(user) { user.get() != null }
 
     init {
         launchWithParent(UI) {

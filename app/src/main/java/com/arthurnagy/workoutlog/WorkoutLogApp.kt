@@ -19,7 +19,6 @@ class WorkoutLogApp : Application(), HasActivityInjector, HasSupportFragmentInje
     @Volatile
     private var needsToInject = true
 
-
     override fun onCreate() {
         injectApplicationIfNecessary()
         super.onCreate()

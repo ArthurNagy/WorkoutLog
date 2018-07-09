@@ -4,7 +4,6 @@ import com.arthurnagy.workoutlog.core.model.User
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
-import dagger.Reusable
 import me.arthurnagy.kotlincoroutines.Result
 import me.arthurnagy.kotlincoroutines.awaitGetResult
 import me.arthurnagy.kotlincoroutines.awaitResult
@@ -12,7 +11,6 @@ import me.arthurnagy.kotlincoroutines.awaitSetResult
 import javax.inject.Inject
 import javax.inject.Named
 
-@Reusable
 class UserRemoteSource @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     @Named(User.REFERENCE)

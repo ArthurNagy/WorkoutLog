@@ -1,14 +1,14 @@
 package com.arthurnagy.workoutlog.core.model
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-
-@Parcelize
 data class Workout(
-    val id: Int
+    val id: Int,
+    val dayId: Int,
+    val timestamp: Long,
+    val exercises: List<WorkoutExercise>
 //TODO: add necessary fields
-) : Parcelable {
+) {
     companion object {
         const val REFERENCE = "workouts"
     }
+
 }

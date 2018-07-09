@@ -10,11 +10,10 @@ inline fun <R> ObservableField<R>.observe(crossinline observer: (R?) -> Unit): O
         }
     }.also { this.addOnPropertyChangedCallback(it) }
 
-inline fun <T, R> ObservableField<R>.dependsOn(dependableField: ObservableField<T>, crossinline mapper: (T?) -> R): ObservableField<R> {
-    dependableField.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
-        override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
-            set(mapper(dependableField.get()))
+inline fun <reified T> dependantObservabelField(vararg dependencies: Observable, crossinline mapper: () -> T?): ObservableField<T> {
+    return object : ObservableField<T>(*dependencies) {
+        override fun get(): T? {
+            return mapper()
         }
-    })
-    return this
+    }
 }

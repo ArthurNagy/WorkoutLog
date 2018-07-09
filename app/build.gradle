@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
@@ -34,10 +33,6 @@ android {
     }
 }
 
-androidExtensions {
-    experimental = true
-}
-
 kotlin {
     experimental {
         coroutines 'enable'
@@ -46,6 +41,7 @@ kotlin {
 
 kapt {
     correctErrorTypes = true
+    generateStubs = true
     javacOptions {
         option("-Xmaxerrs", 1000)
     }
@@ -53,9 +49,9 @@ kapt {
 
 ext {
     constraint_layout = "1.1.2"
-    calendar_view = "1.5.0"
-    androidx = '1.0.0-alpha3'
-    lifecycle = '2.0.0-alpha1'
+    calendar_view = "1.6.0"
+    androidx = '1.0.0-beta01'
+    lifecycle = '2.0.0-beta01'
     dagger = "2.16"
     glide = "4.7.1"
 }

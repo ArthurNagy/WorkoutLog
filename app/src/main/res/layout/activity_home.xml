@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--suppress AndroidUnknownAttribute -->
-    <data class=".MainBinding" />
+    <data class=".HomeBinding" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -12,8 +11,8 @@
         tools:context=".feature.home.HomeActivity">
 
         <fragment
-            android:id="@+id/my_workouts"
-            android:name="com.arthurnagy.workoutlog.feature.workouts.MyWorkoutsFragment"
+            android:id="@+id/workouts"
+            android:name="com.arthurnagy.workoutlog.feature.workouts.WorkoutsFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

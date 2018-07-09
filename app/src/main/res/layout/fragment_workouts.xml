@@ -2,8 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--suppress AndroidUnknownAttribute -->
-    <data class=".MyWorkoutsBinding" />
+    <data class=".WorkoutsBinding" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -27,7 +26,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/app_title"
-                    android:textAppearance="@style/TitleTextAppearance" />
+                    android:textAppearance="@style/TextAppearanceH6" />
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -37,12 +36,10 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        </androidx.core.widget.NestedScrollView>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

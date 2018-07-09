@@ -1,8 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        kotlin_version = "1.2.50"
-        android_gradle_plugin = "3.2.0-beta02"
+        kotlin_version = "1.2.51"
     }
     repositories {
         google()
@@ -12,7 +11,7 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "com.android.tools.build:gradle:$android_gradle_plugin"
+        classpath "com.android.tools.build:gradle:3.2.0-beta02"
         classpath 'com.google.gms:google-services:4.0.1'
     }
 }

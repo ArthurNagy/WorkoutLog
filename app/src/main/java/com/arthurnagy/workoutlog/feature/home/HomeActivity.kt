@@ -2,18 +2,18 @@ package com.arthurnagy.workoutlog.feature.home
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import com.arthurnagy.workoutlog.MainBinding
+import com.arthurnagy.workoutlog.HomeBinding
 import com.arthurnagy.workoutlog.R
 import com.arthurnagy.workoutlog.feature.account.AccountMenuFragment
-import dagger.android.support.DaggerAppCompatActivity
+import com.arthurnagy.workoutlog.feature.shared.WorkoutLogActivity
 
-class HomeActivity : DaggerAppCompatActivity() {
+class HomeActivity : WorkoutLogActivity() {
 
     private val accountMenuFragment: AccountMenuFragment by lazy { AccountMenuFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DataBindingUtil.setContentView<MainBinding>(this, R.layout.activity_home)?.also {
+        DataBindingUtil.setContentView<HomeBinding>(this, R.layout.activity_home)?.also {
             setSupportActionBar(it.bottomAppBar)
             supportActionBar?.setDisplayShowTitleEnabled(false)
             it.bottomAppBar.setNavigationOnClickListener {

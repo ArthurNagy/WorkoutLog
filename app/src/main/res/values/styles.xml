@@ -7,13 +7,16 @@
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
         <item name="android:windowBackground">@color/primary</item>
+        <item name="textAppearanceBody1">@style/TextAppearanceBody1</item>
+        <item name="textAppearanceBody2">@style/TextAppearanceBody2</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearanceSubtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearanceSubtitle2</item>
+        <item name="textAppearanceCaption">@style/TextAppearanceCaption</item>
+        <item name="textAppearanceButton">@style/TextAppearanceButton</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearanceH6</item>
     </style>
 
     <style name="AppTheme" parent="BaseAppTheme" />
-
-    <style name="TitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:fontFamily">@font/noto_sans</item>
-    </style>
 
     <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bg_bottom_sheet_dialog_fragment</item>

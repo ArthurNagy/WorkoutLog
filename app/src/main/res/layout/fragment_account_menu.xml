@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--suppress AndroidUnknownAttribute -->
     <data class=".AccountMenuBinding">
 
         <variable
@@ -64,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{viewModel.user.displayName}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textAppearance="@style/TextAppearanceSubtitle2"
             app:layout_constraintStart_toEndOf="@id/third_keyline"
             app:layout_constraintTop_toTopOf="@id/user_avatar"
             tools:text="Arthur Nagy" />
@@ -74,7 +73,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{viewModel.user.email}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
             app:layout_constraintStart_toEndOf="@id/third_keyline"
             app:layout_constraintTop_toBottomOf="@id/user_name"
             tools:text="arthur.93.nagy@gmail.com" />

@@ -1,11 +1,10 @@
 package com.arthurnagy.workoutlog.core.model
 
-data class Routine(
-    val id: Int,
-    val days: List<Day>
+data class Day(
+    val id: Int
 //TODO: add necessary fields
 ) {
     companion object {
-        const val REFERENCE = "routines"
+        const val REFERENCE = "days"
     }
 }
