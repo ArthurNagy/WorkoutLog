@@ -1,36 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2018 Halcyon Mobile
-  ~ http://www.halcyonmobile.com
-  ~ All rights reserved.
-  -->
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="TextAppearanceBody1" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="fontFamily">@font/roboto_mono</item>
-    </style>
-
-    <style name="TextAppearanceBody2" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="fontFamily">@font/roboto_mono</item>
-    </style>
-
-    <style name="TextAppearanceSubtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="fontFamily">@font/roboto_mono</item>
-    </style>
-
-    <style name="TextAppearanceSubtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
-        <item name="fontFamily">@font/roboto_mono_medium</item>
-    </style>
-
-    <style name="TextAppearanceCaption" parent="TextAppearance.MaterialComponents.Caption">
-        <item name="fontFamily">@font/roboto_mono</item>
-    </style>
-
-    <style name="TextAppearanceButton" parent="TextAppearance.MaterialComponents.Button">
-        <item name="fontFamily">@font/roboto_mono_medium</item>
+    <style name="TextAppearanceH5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/nunito_sans</item>
     </style>
 
     <style name="TextAppearanceH6" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="fontFamily">@font/roboto_mono_medium</item>
+        <item name="fontFamily">@font/nunito_sans_semibold</item>
+    </style>
+
+    <style name="TextAppearanceSubtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/nunito_sans</item>
+    </style>
+
+    <style name="TextAppearanceSubtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/nunito_sans_semibold</item>
+    </style>
+
+    <style name="TextAppearanceBody1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/nunito_sans</item>
+    </style>
+
+    <style name="TextAppearanceBody2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/nunito_sans</item>
+    </style>
+
+    <style name="TextAppearanceButton" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/nunito_sans_semibold</item>
+    </style>
+
+    <style name="TextAppearanceCaption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/nunito_sans</item>
     </style>
 
 </resources>

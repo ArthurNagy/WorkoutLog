@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/my_workouts">
+
+    <fragment
+        android:id="@+id/my_workouts"
+        android:name="com.arthurnagy.workoutlog.feature.workouts.WorkoutsFragment"
+        android:label="fragment_title_screen"
+        tools:layout="@layout/fragment_workouts" />
+
+</navigation>
+

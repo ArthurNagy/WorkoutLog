@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs"
 
 android {
     buildToolsVersion build_tools
@@ -41,7 +42,6 @@ kotlin {
 
 kapt {
     correctErrorTypes = true
-    generateStubs = true
     javacOptions {
         option("-Xmaxerrs", 1000)
     }
@@ -72,6 +72,12 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle"
+
+    // Navigation Arch Component
+    implementation "android.arch.navigation:navigation-fragment:$navigation_arch"
+    implementation "android.arch.navigation:navigation-fragment-ktx:$navigation_arch"
+    implementation "android.arch.navigation:navigation-ui:$navigation_arch"
+    implementation "android.arch.navigation:navigation-ui-ktx:$navigation_arch"
 
     // Firebase
     implementation "com.google.firebase:firebase-core:$firebase_core"

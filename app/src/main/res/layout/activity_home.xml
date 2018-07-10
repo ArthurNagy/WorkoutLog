@@ -11,10 +11,12 @@
         tools:context=".feature.home.HomeActivity">
 
         <fragment
-            android:id="@+id/workouts"
-            android:name="com.arthurnagy.workoutlog.feature.workouts.WorkoutsFragment"
+            android:id="@+id/nav_host"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:navGraph="@navigation/nav_graph"
+            app:defaultNavHost="true" />
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_app_bar"

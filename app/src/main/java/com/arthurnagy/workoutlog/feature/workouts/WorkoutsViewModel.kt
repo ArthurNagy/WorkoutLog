@@ -6,4 +6,4 @@ import javax.inject.Inject
 
 class WorkoutsViewModel @Inject constructor(
     private val userRepository: UserRepository
-) : WorkoutLogViewModel() 
+) : WorkoutLogViewModel()
