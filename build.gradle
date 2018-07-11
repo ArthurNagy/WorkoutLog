@@ -12,7 +12,7 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "com.android.tools.build:gradle:3.2.0-beta02"
+        classpath 'com.android.tools.build:gradle:3.2.0-beta03'
         classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$navigation_arch"
         classpath 'com.google.gms:google-services:4.0.1'
     }
@@ -32,7 +32,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    build_tools = '28.0.0'
+    build_tools = '28.0.1'
     min_sdk = project.hasProperty('minSdkV') ? minSdkV.toInteger() : 19
     target_sdk = 28
     compile_sdk = 28
