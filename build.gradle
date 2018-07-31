@@ -2,7 +2,7 @@
 buildscript {
     ext {
         kotlin_version = "1.2.51"
-        navigation_arch = "1.0.0-alpha02"
+        navigation_arch = "1.0.0-alpha04"
     }
     repositories {
         google()
@@ -12,7 +12,7 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.android.tools.build:gradle:3.2.0-beta03'
+        classpath 'com.android.tools.build:gradle:3.2.0-beta05'
         classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$navigation_arch"
         classpath 'com.google.gms:google-services:4.0.1'
     }
@@ -36,7 +36,4 @@ ext {
     min_sdk = project.hasProperty('minSdkV') ? minSdkV.toInteger() : 19
     target_sdk = 28
     compile_sdk = 28
-    coroutines = "0.23.3"
-    firebase_core = '16.0.1'
-    firebase_firestore = '17.0.2'
 }

@@ -4,7 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs"
 
 android {
-    buildToolsVersion build_tools
+    buildToolsVersion rootProject.build_tools
     compileSdkVersion rootProject.compile_sdk
     defaultConfig {
         applicationId "com.arthurnagy.workoutlog"
@@ -48,12 +48,11 @@ kapt {
 }
 
 ext {
-    constraint_layout = "1.1.2"
-    calendar_view = "1.6.0"
     androidx = '1.0.0-beta01'
     lifecycle = '2.0.0-beta01'
     dagger = "2.16"
     glide = "4.7.1"
+    coroutines = "0.23.4"
 }
 
 dependencies {
@@ -66,7 +65,7 @@ dependencies {
     implementation "androidx.core:core-ktx:$androidx"
     implementation "androidx.recyclerview:recyclerview:$androidx"
     implementation "com.google.android.material:material:$androidx"
-    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
 
     // Architecture components
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
@@ -80,10 +79,10 @@ dependencies {
     implementation "android.arch.navigation:navigation-ui-ktx:$navigation_arch"
 
     // Firebase
-    implementation "com.google.firebase:firebase-core:$firebase_core"
-    implementation "com.google.firebase:firebase-firestore:$firebase_firestore"
-    implementation "com.google.firebase:firebase-auth:16.0.2"
-    implementation "com.google.android.gms:play-services-auth:15.0.1"
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-firestore:17.0.4'
+    implementation 'com.google.firebase:firebase-auth:16.0.2'
+    implementation 'com.google.android.gms:play-services-auth:15.0.1'
 
     implementation 'me.arthurnagy.kotlincoroutines:firestore:0.0.3'
 
@@ -97,7 +96,7 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide"
     kapt "com.github.bumptech.glide:compiler:$glide"
 
-    implementation "com.github.prolificinteractive:material-calendarview:$calendar_view"
+    implementation 'com.github.prolificinteractive:material-calendarview:1.6.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

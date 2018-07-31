@@ -18,5 +18,6 @@
 
     <dimen name="account_header_size">56dp</dimen>
     <dimen name="avatar_size">40dp</dimen>
+    <dimen name="app_bar_elevation">4dp</dimen>
 
 </resources>
