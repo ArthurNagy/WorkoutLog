@@ -51,6 +51,7 @@ ext {
     androidx = '1.0.0-beta01'
     lifecycle = '2.0.0-beta01'
     dagger = "2.16"
+    koin = "1.0.0-beta-3"
     glide = "4.7.1"
     coroutines = "0.23.4"
 }
@@ -86,11 +87,16 @@ dependencies {
 
     implementation 'me.arthurnagy.kotlincoroutines:firestore:0.0.3'
 
-    // Dagger
-    implementation "com.google.dagger:dagger:$dagger"
-    implementation "com.google.dagger:dagger-android-support:$dagger"
-    kapt "com.google.dagger:dagger-compiler:$dagger"
-    kapt "com.google.dagger:dagger-android-processor:$dagger"
+    // Koin
+    implementation "org.koin:koin-android:$koin"
+    implementation "org.koin:koin-android-viewmodel:$koin"
+    implementation "org.koin:koin-android-scope:$koin"
+
+//    // Dagger
+//    implementation "com.google.dagger:dagger:$dagger"
+//    implementation "com.google.dagger:dagger-android-support:$dagger"
+//    kapt "com.google.dagger:dagger-compiler:$dagger"
+//    kapt "com.google.dagger:dagger-android-processor:$dagger"
 
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide"
