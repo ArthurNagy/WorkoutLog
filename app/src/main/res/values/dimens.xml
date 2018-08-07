@@ -3,7 +3,8 @@
 
     <dimen name="title_size">20sp</dimen>
 
-    <dimen name="day_view_height">72dp</dimen>
+    <dimen name="app_bar_elevation">4dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
     <dimen name="fab_size">56dp</dimen>
     <dimen name="fab_corner_radius">28dp</dimen>
     <dimen name="bottom_app_bar_fake_elevation_height">4dp</dimen>
@@ -16,7 +17,11 @@
     <dimen name="second_keyline">24dp</dimen>
     <dimen name="third_keyline">72dp</dimen>
 
+    <dimen name="touch_target">48dp</dimen>
+
     <dimen name="account_header_size">56dp</dimen>
     <dimen name="avatar_size">40dp</dimen>
+
+    <dimen name="day_view_height">72dp</dimen>
 
 </resources>

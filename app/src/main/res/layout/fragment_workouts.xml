@@ -2,11 +2,18 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!--suppress AndroidUnknownAttribute -->
     <data class=".WorkoutsBinding" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
@@ -19,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 app:contentInsetStart="0dp"
-                app:layout_scrollFlags="scroll">
+                app:layout_scrollFlags="scroll|snap">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -32,15 +39,10 @@
             </androidx.appcompat.widget.Toolbar>
 
             <com.arthurnagy.workoutlog.feature.workouts.WeekView
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
