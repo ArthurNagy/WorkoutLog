@@ -13,10 +13,10 @@ class HomeActivity : WorkoutLogActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DataBindingUtil.setContentView<HomeBinding>(this, R.layout.activity_home)?.also {
-            setSupportActionBar(it.bottomAppBar)
+        DataBindingUtil.setContentView<HomeBinding>(this, R.layout.activity_home)?.also { homeBinding ->
+            setSupportActionBar(homeBinding.bottomAppBar)
             supportActionBar?.setDisplayShowTitleEnabled(false)
-            it.bottomAppBar.setNavigationOnClickListener {
+            homeBinding.bottomAppBar.setNavigationOnClickListener {
                 accountMenuFragment.show(supportFragmentManager, accountMenuFragment.tag)
             }
         }
