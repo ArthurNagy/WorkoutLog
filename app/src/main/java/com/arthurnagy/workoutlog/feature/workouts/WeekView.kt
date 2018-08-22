@@ -14,7 +14,9 @@ class WeekView @JvmOverloads constructor(context: Context, attr: AttributeSet? =
 
     init {
         topbarVisible = false
-        setDateTextAppearance(R.style.DateTextAppearance)
+        setDateTextAppearance(R.style.TextAppearanceBody2)
+        selectionMode = SELECTION_MODE_SINGLE
+
         state().edit()
             .setCalendarDisplayMode(CalendarMode.WEEKS)
             .isCacheCalendarPositionEnabled(true)
@@ -25,8 +27,9 @@ class WeekView @JvmOverloads constructor(context: Context, attr: AttributeSet? =
 
     override fun onFinishInflate() {
         super.onFinishInflate()
-        currentDate = CalendarDay.today()
-        selectedDate = currentDate
+        val today = CalendarDay.today()
+        currentDate = today
+        setDateSelected(today, true)
     }
 
     private class SelectionDecorator(private val context: Context) : DayViewDecorator {
