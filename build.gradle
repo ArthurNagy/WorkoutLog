@@ -1,8 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        kotlin_version = "1.2.60"
-        navigation_arch = "1.0.0-alpha04"
+        kotlin_version = "1.2.61"
+        navigation_arch = "1.0.0-alpha05"
     }
     repositories {
         google()
@@ -14,7 +14,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.android.tools.build:gradle:3.2.0-beta05'
         classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$navigation_arch"
-        classpath 'com.google.gms:google-services:4.0.1'
+        classpath 'com.google.gms:google-services:4.1.0'
     }
 }
 
@@ -32,7 +32,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    build_tools = '28.0.1'
+    build_tools = '28.0.2'
     min_sdk = project.hasProperty('minSdkV') ? minSdkV.toInteger() : 19
     target_sdk = 28
     compile_sdk = 28
