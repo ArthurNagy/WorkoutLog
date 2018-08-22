@@ -5,19 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
 import com.arthurnagy.workoutlog.R
 import com.arthurnagy.workoutlog.WorkoutsBinding
-import com.arthurnagy.workoutlog.feature.shared.WorkoutLogFragment
-import com.arthurnagy.workoutlog.feature.shared.provideViewModel
 import com.google.android.material.appbar.AppBarLayout
-import javax.inject.Inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.absoluteValue
 
-class WorkoutsFragment : WorkoutLogFragment() {
+class WorkoutsFragment : Fragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val viewModel: WorkoutsViewModel by viewModel()
     private lateinit var binding: WorkoutsBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -26,7 +23,6 @@ class WorkoutsFragment : WorkoutLogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel = provideViewModel<WorkoutsViewModel>(viewModelFactory)
         val appBarElevation = resources.getDimensionPixelSize(R.dimen.app_bar_elevation).toFloat()
         val toolbarHeight = resources.getDimensionPixelSize(R.dimen.toolbar_height)
         binding.appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, offset ->

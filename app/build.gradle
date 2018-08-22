@@ -4,7 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs"
 
 android {
-    buildToolsVersion build_tools
+    buildToolsVersion rootProject.build_tools
     compileSdkVersion rootProject.compile_sdk
     defaultConfig {
         applicationId "com.arthurnagy.workoutlog"
@@ -50,7 +50,7 @@ kapt {
 ext {
     androidx = '1.0.0-rc01'
     lifecycle = '2.0.0-rc01'
-    dagger = "2.16"
+    koin = "1.0.0-beta-7"
     glide = "4.7.1"
     coroutines = "0.24.0"
 }
@@ -86,11 +86,10 @@ dependencies {
 
     implementation 'me.arthurnagy.kotlincoroutines:firestore:0.0.3'
 
-    // Dagger
-    implementation "com.google.dagger:dagger:$dagger"
-    implementation "com.google.dagger:dagger-android-support:$dagger"
-    kapt "com.google.dagger:dagger-compiler:$dagger"
-    kapt "com.google.dagger:dagger-android-processor:$dagger"
+    // Koin
+    implementation "org.koin:koin-android:$koin"
+    implementation "org.koin:koin-androidx-viewmodel:$koin"
+    implementation "org.koin:koin-androidx-scope:$koin"
 
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide"

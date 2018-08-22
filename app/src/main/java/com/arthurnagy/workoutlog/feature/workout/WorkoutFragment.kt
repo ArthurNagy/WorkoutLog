@@ -1,5 +1,5 @@
 package com.arthurnagy.workoutlog.feature.workout
 
-import com.arthurnagy.workoutlog.feature.shared.WorkoutLogFragment
+import androidx.fragment.app.Fragment
 
-class WorkoutFragment : WorkoutLogFragment()
+class WorkoutFragment : Fragment()

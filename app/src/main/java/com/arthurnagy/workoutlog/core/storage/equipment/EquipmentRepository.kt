@@ -2,9 +2,8 @@ package com.arthurnagy.workoutlog.core.storage.equipment
 
 import com.arthurnagy.workoutlog.core.model.GenericData
 import com.arthurnagy.workoutlog.core.storage.DataRepository
-import javax.inject.Inject
 
-class EquipmentRepository @Inject constructor(
+class EquipmentRepository(
     remoteSource: EquipmentRemoteSource,
     memorySource: EquipmentMemorySource
 ) : DataRepository<Int, GenericData>(remoteSource, memorySource) {

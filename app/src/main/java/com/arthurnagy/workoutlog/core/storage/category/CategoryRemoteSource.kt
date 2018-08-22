@@ -5,11 +5,8 @@ import com.arthurnagy.workoutlog.core.storage.DataSource
 import com.google.firebase.firestore.CollectionReference
 import me.arthurnagy.kotlincoroutines.Result
 import me.arthurnagy.kotlincoroutines.awaitGetResult
-import javax.inject.Inject
-import javax.inject.Named
 
-class CategoryRemoteSource @Inject constructor(
-    @Named(GenericData.CATEGORY_REFERENCE)
+class CategoryRemoteSource(
     private val cateogryReference: CollectionReference
 ) : DataSource<Int, GenericData> {
 

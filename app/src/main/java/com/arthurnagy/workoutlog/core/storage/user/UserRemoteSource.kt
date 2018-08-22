@@ -8,12 +8,9 @@ import me.arthurnagy.kotlincoroutines.Result
 import me.arthurnagy.kotlincoroutines.awaitGetResult
 import me.arthurnagy.kotlincoroutines.awaitResult
 import me.arthurnagy.kotlincoroutines.awaitSetResult
-import javax.inject.Inject
-import javax.inject.Named
 
-class UserRemoteSource @Inject constructor(
+class UserRemoteSource(
     private val firebaseAuth: FirebaseAuth,
-    @Named(User.REFERENCE)
     private val userCollection: CollectionReference
 ) {
 

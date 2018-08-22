@@ -1,22 +1,9 @@
 package com.arthurnagy.workoutlog.feature.account
 
-import androidx.lifecycle.ViewModel
-import com.arthurnagy.workoutlog.core.injection.ViewModelKey
-import dagger.Binds
-import dagger.Module
-import dagger.android.ContributesAndroidInjector
-import dagger.multibindings.IntoMap
+import org.koin.androidx.viewmodel.ext.koin.viewModel
+import org.koin.dsl.module.module
 
-@Suppress("unused")
-@Module
-abstract class AccountMenuModule {
+val accountMenuModule = module {
 
-    @ContributesAndroidInjector
-    abstract fun bindAccountMenuFragment(): AccountMenuFragment
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(AccountMenuViewModel::class)
-    abstract fun bindAccountMenuViewModel(accountMenuViewModel: AccountMenuViewModel): ViewModel
-
+    viewModel<AccountMenuViewModel>()
 }
