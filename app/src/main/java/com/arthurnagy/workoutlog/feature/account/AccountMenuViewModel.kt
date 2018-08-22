@@ -9,9 +9,8 @@ import com.arthurnagy.workoutlog.feature.shared.dependantObservabelField
 import com.google.firebase.auth.AuthCredential
 import kotlinx.coroutines.experimental.android.UI
 import me.arthurnagy.kotlincoroutines.Result
-import javax.inject.Inject
 
-class AccountMenuViewModel @Inject constructor(private val userRepository: UserRepository) : WorkoutLogViewModel() {
+class AccountMenuViewModel(private val userRepository: UserRepository) : WorkoutLogViewModel() {
 
     val user = ObservableField<User>()
     val isUserLoggedIn = dependantObservabelField(user) { user.get() != null }

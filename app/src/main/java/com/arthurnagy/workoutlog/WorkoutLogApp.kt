@@ -1,51 +1,19 @@
 package com.arthurnagy.workoutlog
 
-import android.app.Activity
 import android.app.Application
-import androidx.fragment.app.Fragment
-import com.arthurnagy.workoutlog.core.injection.DaggerAppComponent
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import dagger.android.support.HasSupportFragmentInjector
-import javax.inject.Inject
+import com.arthurnagy.workoutlog.core.injection.appModule
+import com.arthurnagy.workoutlog.core.injection.dbModule
+import com.arthurnagy.workoutlog.core.injection.repositoryModule
+import com.arthurnagy.workoutlog.feature.account.accountMenuModule
+import com.arthurnagy.workoutlog.feature.workout.workoutModule
+import com.arthurnagy.workoutlog.feature.workouts.workoutsModule
+import org.koin.android.ext.android.startKoin
 
-class WorkoutLogApp : Application(), HasActivityInjector, HasSupportFragmentInjector {
-
-    @Inject
-    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
-    @Inject
-    lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
-    @Volatile
-    private var needsToInject = true
+class WorkoutLogApp : Application() {
 
     override fun onCreate() {
-        injectApplicationIfNecessary()
         super.onCreate()
-    }
-
-    override fun activityInjector(): AndroidInjector<Activity> = activityInjector
-
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector
-
-    @Inject
-    fun setInjected() {
-        needsToInject = false
-    }
-
-    private fun createApplicationInjector(): AndroidInjector<WorkoutLogApp> = DaggerAppComponent.builder().create(this)
-
-    private fun injectApplicationIfNecessary() {
-        if (needsToInject) {
-            synchronized(this) {
-                if (needsToInject) {
-                    createApplicationInjector().inject(this)
-                    if (needsToInject) {
-                        throw IllegalStateException("Did not inject the Application")
-                    }
-                }
-            }
-        }
+        startKoin(this, listOf(appModule, dbModule, repositoryModule, accountMenuModule, workoutModule, workoutsModule))
     }
 
 }

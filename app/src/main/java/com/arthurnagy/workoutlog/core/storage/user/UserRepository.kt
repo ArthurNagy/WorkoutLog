@@ -1,13 +1,12 @@
 package com.arthurnagy.workoutlog.core.storage.user
 
-import com.arthurnagy.workoutlog.core.injection.AppScope
 import com.arthurnagy.workoutlog.core.model.User
 import com.google.firebase.auth.AuthCredential
 import me.arthurnagy.kotlincoroutines.Result
-import javax.inject.Inject
 
-@AppScope
-class UserRepository @Inject constructor(private val userRemoteSource: UserRemoteSource) {
+class UserRepository(
+    private val userRemoteSource: UserRemoteSource
+) {
 
     private var user: User? = null
 

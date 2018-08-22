@@ -1,3 +1,7 @@
 package com.arthurnagy.workoutlog.feature.workout
 
-class WorkoutModule
+import org.koin.dsl.module.module
+
+val workoutModule = module {
+
+}

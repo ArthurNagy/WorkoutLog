@@ -2,9 +2,8 @@ package com.arthurnagy.workoutlog.core.storage.category
 
 import com.arthurnagy.workoutlog.core.model.GenericData
 import com.arthurnagy.workoutlog.core.storage.DataRepository
-import javax.inject.Inject
 
-class CategoryRepository @Inject constructor(
+class CategoryRepository(
     remoteSource: CategoryRemoteSource,
     memorySource: CategoryMemorySource
 ) : DataRepository<Int, GenericData>(remoteSource, memorySource) {
