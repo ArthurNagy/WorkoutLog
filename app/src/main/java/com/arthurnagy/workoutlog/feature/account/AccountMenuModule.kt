@@ -5,5 +5,5 @@ import org.koin.dsl.module.module
 
 val accountMenuModule = module {
 
-    viewModel<AccountMenuViewModel>()
+    viewModel { AccountMenuViewModel(get()) }
 }

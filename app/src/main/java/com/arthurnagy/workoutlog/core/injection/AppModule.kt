@@ -12,15 +12,13 @@ val appModule = module {
 
     factory<GoogleSignInClient> {
         GoogleSignIn.getClient(
-            get(), GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            get<Context>(), GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .requestIdToken(get<Context>().getString(R.string.default_web_client_id))
                 .build()
         )
     }
 
-    factory<FirebaseAuth> {
-        FirebaseAuth.getInstance()
-    }
+    factory<FirebaseAuth> { FirebaseAuth.getInstance() }
 
 }

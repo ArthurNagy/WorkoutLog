@@ -5,5 +5,5 @@ import org.koin.dsl.module.module
 
 val workoutsModule = module {
 
-    viewModel<WorkoutsViewModel>()
+    viewModel { WorkoutsViewModel(get()) }
 }
