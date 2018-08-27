@@ -52,7 +52,7 @@ ext {
     lifecycle = '2.0.0-rc01'
     koin = "1.0.0-beta-7"
     glide = "4.7.1"
-    coroutines = "0.24.0"
+    coroutines = "0.25.0"
 }
 
 dependencies {
@@ -79,7 +79,7 @@ dependencies {
     implementation "android.arch.navigation:navigation-ui-ktx:$navigation_arch"
 
     // Firebase
-    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-core:16.0.3'
     implementation 'com.google.firebase:firebase-firestore:17.1.0'
     implementation "com.google.firebase:firebase-auth:16.0.3"
     implementation "com.google.android.gms:play-services-auth:16.0.0"
