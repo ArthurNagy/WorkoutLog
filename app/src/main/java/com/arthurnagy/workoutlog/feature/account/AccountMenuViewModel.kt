@@ -7,7 +7,7 @@ import com.arthurnagy.workoutlog.core.model.User
 import com.arthurnagy.workoutlog.core.storage.user.UserRepository
 import com.arthurnagy.workoutlog.feature.shared.dependantObservabelField
 import com.google.firebase.auth.AuthCredential
-import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.Dispatchers
 import me.arthurnagy.kotlincoroutines.Result
 
 class AccountMenuViewModel(private val userRepository: UserRepository) : WorkoutLogViewModel() {
@@ -16,7 +16,7 @@ class AccountMenuViewModel(private val userRepository: UserRepository) : Workout
     val isUserLoggedIn = dependantObservabelField(user) { user.get() != null }
 
     init {
-        launchWithParent(UI) {
+        launchWithParent(Dispatchers.Main) {
             val userResult = userRepository.getUser()
             when (userResult) {
                 is Result.Success -> user.set(userResult.value)
@@ -26,7 +26,7 @@ class AccountMenuViewModel(private val userRepository: UserRepository) : Workout
     }
 
     fun signIn(authCredential: AuthCredential) {
-        launchWithParent(UI) {
+        launchWithParent(Dispatchers.Main) {
             val result = userRepository.createUser(authCredential)
             when (result) {
                 is Result.Success -> user.set(result.value)

@@ -34,6 +34,8 @@
     volatile <fields>;
 }
 
+-keepnames class kotlinx.** { *; }
+
 -keepclassmembers class com.arthurnagy.workoutlog.core.model.** {
   *;
 }

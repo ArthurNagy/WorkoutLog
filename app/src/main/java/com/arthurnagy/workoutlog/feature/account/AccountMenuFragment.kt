@@ -41,7 +41,7 @@ class AccountMenuFragment : RoundedBottomSheetDialogFragment() {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
-                viewModel.signIn(GoogleAuthProvider.getCredential(account.idToken, null))
+                viewModel.signIn(GoogleAuthProvider.getCredential(account?.idToken, null))
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
             }

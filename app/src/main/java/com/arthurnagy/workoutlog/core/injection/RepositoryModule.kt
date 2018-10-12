@@ -18,6 +18,7 @@ import com.arthurnagy.workoutlog.core.storage.muscle.MuscleRepository
 import com.arthurnagy.workoutlog.core.storage.user.UserRemoteSource
 import com.arthurnagy.workoutlog.core.storage.user.UserRepository
 import org.koin.dsl.module.module
+import org.koin.experimental.builder.single
 
 val repositoryModule = module {
 

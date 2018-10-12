@@ -1,11 +1,11 @@
 package com.arthurnagy.workoutlog.core
 
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.experimental.CoroutineScope
-import kotlinx.coroutines.experimental.DefaultDispatcher
-import kotlinx.coroutines.experimental.Job
-import kotlinx.coroutines.experimental.launch
-import kotlin.coroutines.experimental.CoroutineContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 open class WorkoutLogViewModel : ViewModel() {
 
@@ -17,7 +17,7 @@ open class WorkoutLogViewModel : ViewModel() {
     }
 
     protected fun launchWithParent(
-        context: CoroutineContext = DefaultDispatcher,
+        context: CoroutineContext = Dispatchers.Default,
         block: suspend CoroutineScope.() -> Unit
     ) = launch(context = context, parent = job, block = block)
 
