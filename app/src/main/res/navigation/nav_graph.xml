@@ -2,13 +2,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@+id/my_workouts">
+    app:startDestination="@+id/today_fragment">
 
     <fragment
-        android:id="@+id/my_workouts"
-        android:name="com.arthurnagy.workoutlog.feature.workouts.WorkoutsFragment"
+        android:id="@+id/today_fragment"
+        android:name="com.arthurnagy.workoutlog.feature.today.TodayFragment"
         android:label="fragment_title_screen"
-        tools:layout="@layout/fragment_workouts" />
+        tools:layout="@layout/today_fragment" />
 
 </navigation>
 
