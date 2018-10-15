@@ -2,13 +2,31 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@+id/today_fragment">
+    app:startDestination="@+id/todayFragment">
 
     <fragment
-        android:id="@+id/today_fragment"
+        android:id="@+id/todayFragment"
         android:name="com.arthurnagy.workoutlog.feature.today.TodayFragment"
-        android:label="fragment_title_screen"
-        tools:layout="@layout/today_fragment" />
+        tools:layout="@layout/today_fragment" >
+        <action
+            android:id="@+id/action_todayFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+        <action
+            android:id="@+id/action_todayFragment_to_workoutFragment"
+            app:destination="@id/workoutFragment" />
+        <action
+            android:id="@+id/action_todayFragment_to_createWorkoutFragment"
+            app:destination="@id/createWorkoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutFragment"
+        android:name="com.arthurnagy.workoutlog.feature.workout.WorkoutFragment" />
+    <fragment
+        android:id="@+id/createWorkoutFragment"
+        android:name="com.arthurnagy.workoutlog.feature.create.CreateWorkoutFragment" />
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.arthurnagy.workoutlog.feature.profile.UserProfileFragment" />
 
 </navigation>
 
