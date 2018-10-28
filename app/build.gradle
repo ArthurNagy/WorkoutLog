@@ -43,14 +43,14 @@ ext {
     lifecycle = '2.0.0'
     koin = "1.0.1"
     glide = "4.8.0"
-    coroutines = '0.30.2-eap13'
-    coroutinesFirebase = '0.0.4'
+    coroutines = '1.0.0-RC1'
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutines"
 
     // Support Libraries
     implementation "androidx.appcompat:appcompat:$androidx"
@@ -72,14 +72,9 @@ dependencies {
 
     // Firebase
     implementation 'com.google.firebase:firebase-core:16.0.4'
-    implementation 'com.google.firebase:firebase-firestore:17.1.1'
+    implementation 'com.google.firebase:firebase-firestore:17.1.2'
     implementation "com.google.firebase:firebase-auth:16.0.5"
     implementation "com.google.android.gms:play-services-auth:16.0.1"
-
-    implementation 'me.arthurnagy.kotlincoroutines:firestore:0.0.3'
-
-//    implementation "me.arthurnagy.kotlincoroutines:firebase-core:$coroutinesFirebase"
-//    implementation "me.arthurnagy.kotlincoroutines:firestore:$coroutinesFirebase"
 
     // Koin
     implementation "org.koin:koin-android:$koin"

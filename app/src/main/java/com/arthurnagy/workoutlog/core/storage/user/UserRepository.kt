@@ -1,8 +1,8 @@
 package com.arthurnagy.workoutlog.core.storage.user
 
+import com.arthurnagy.workoutlog.core.Result
 import com.arthurnagy.workoutlog.core.model.User
 import com.google.firebase.auth.AuthCredential
-import me.arthurnagy.kotlincoroutines.Result
 
 class UserRepository(
     private val userRemoteSource: UserRemoteSource

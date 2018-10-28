@@ -1,13 +1,13 @@
 package com.arthurnagy.workoutlog.core.storage.user
 
+import com.arthurnagy.workoutlog.core.Result
+import com.arthurnagy.workoutlog.core.awaitResult
+import com.arthurnagy.workoutlog.core.map
 import com.arthurnagy.workoutlog.core.model.User
+import com.arthurnagy.workoutlog.core.serialize
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
-import me.arthurnagy.kotlincoroutines.Result
-import me.arthurnagy.kotlincoroutines.awaitGetResult
-import me.arthurnagy.kotlincoroutines.awaitResult
-import me.arthurnagy.kotlincoroutines.awaitSetResult
 
 class UserRemoteSource(
     private val firebaseAuth: FirebaseAuth,
@@ -25,7 +25,7 @@ class UserRemoteSource(
                     email = firebaseUser.email,
                     profilePictureUrl = firebaseUser.photoUrl.toString()
                 )
-                val userResult = userCollection.document(user.id).awaitSetResult(user)
+                val userResult = userCollection.document(user.id).set(user).awaitResult()
                 return when (userResult) {
                     is Result.Success -> Result.Success(user)
                     is Result.Error -> userResult
@@ -36,7 +36,7 @@ class UserRemoteSource(
     }
 
     suspend fun getUser(): Result<User> = firebaseAuth.currentUser?.let {
-        userCollection.document(it.uid).awaitGetResult<User>()
+        userCollection.document(it.uid).get().awaitResult().map { it.serialize<User>() }
     } ?: Result.Error(Exception("No logged in user"))
 
 }
