@@ -12,8 +12,8 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.arthurnagy.workoutlog.R
 import com.arthurnagy.workoutlog.TodayBinding
+import com.arthurnagy.workoutlog.core.consumeOptionsItemSelected
 import com.arthurnagy.workoutlog.feature.WorkoutLogFragment
-import com.arthurnagy.workoutlog.feature.shared.consumeOptionsItemSelected
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TodayFragment : WorkoutLogFragment() {
