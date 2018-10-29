@@ -43,7 +43,7 @@ ext {
     lifecycle = '2.0.0'
     koin = "1.0.1"
     glide = "4.8.0"
-    coroutines = '1.0.0-RC1'
+    coroutines = '1.0.0'
 }
 
 dependencies {
@@ -85,7 +85,6 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide"
     kapt "com.github.bumptech.glide:compiler:$glide"
 
-//    implementation "com.github.prolificinteractive:material-calendarview:2.0.0"
 }
 
 apply plugin: 'com.google.gms.google-services'
