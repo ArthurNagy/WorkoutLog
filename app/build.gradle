@@ -14,6 +14,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+
+        resConfigs "en"
     }
     buildTypes {
         debug {
@@ -75,6 +77,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:17.1.2'
     implementation "com.google.firebase:firebase-auth:16.0.5"
     implementation "com.google.android.gms:play-services-auth:16.0.1"
+
+    implementation 'com.firebaseui:firebase-ui-auth:4.2.1'
 
     // Koin
     implementation "org.koin:koin-android:$koin"

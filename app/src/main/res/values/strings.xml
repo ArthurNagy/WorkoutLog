@@ -4,5 +4,6 @@
     <string name="title_today">Today\'s workout</string>
     <string name="start_workout">Start workout</string>
     <string name="user_profile">User profile</string>
+    <string name="profile">Profile</string>
 
 </resources>

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.arthurnagy.workoutlog.R
 import com.arthurnagy.workoutlog.UserProfileBinding
 import com.arthurnagy.workoutlog.feature.WorkoutLogFragment
 
@@ -17,6 +18,9 @@ class UserProfileFragment : WorkoutLogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = UserProfileBinding.inflate(inflater)
         NavigationUI.setupWithNavController(binding.appbar.toolbar, findNavController())
+
+        binding.appbar.collapsingToolbar.title = getString(R.string.profile)
+
         return binding.root
     }
 

@@ -20,13 +20,12 @@ fun ImageView.imageFromUrl(imageUrl: String?) {
 
 @BindingAdapter("profileImageUrl")
 fun ImageView.profileImageFromUrl(imageUrl: String?) {
-    if (!imageUrl.isNullOrEmpty()) {
-        Glide.with(context)
-            .load(imageUrl)
-            .apply(RequestOptions.circleCropTransform())
-            .transition(DrawableTransitionOptions.withCrossFade())
-            .into(this)
-    }
+    Glide.with(context)
+        .load(imageUrl)
+        .apply(RequestOptions.circleCropTransform())
+//        .apply(RequestOptions.placeholderOf(R.drawable.))
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .into(this)
 }
 
 @BindingAdapter("goneIf")

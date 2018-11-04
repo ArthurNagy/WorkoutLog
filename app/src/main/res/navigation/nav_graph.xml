@@ -10,25 +10,25 @@
         tools:layout="@layout/today_fragment">
         <action
             android:id="@+id/action_todayFragment_to_userProfileFragment"
-            app:destination="@id/userProfileFragment"
-            app:enterAnim="@anim/slide_in_bot"
-            app:exitAnim="@anim/slide_out_top"
-            app:popEnterAnim="@anim/slide_in_top"
-            app:popExitAnim="@anim/slide_out_bot"/>
+            app:destination="@id/userProfileFragment" />
+        <!--app:enterAnim="@anim/slide_in_bot"-->
+        <!--app:exitAnim="@anim/slide_out_top"-->
+        <!--app:popEnterAnim="@anim/slide_in_top"-->
+        <!--app:popExitAnim="@anim/slide_out_bot"/>-->
         <action
             android:id="@+id/action_todayFragment_to_workoutFragment"
-            app:destination="@id/workoutFragment"
-            app:enterAnim="@anim/slide_in_bot"
-            app:exitAnim="@anim/slide_out_top"
-            app:popEnterAnim="@anim/slide_in_top"
-            app:popExitAnim="@anim/slide_out_bot" />
+            app:destination="@id/workoutFragment" />
+        <!--app:enterAnim="@anim/slide_in_bot"-->
+        <!--app:exitAnim="@anim/slide_out_top"-->
+        <!--app:popEnterAnim="@anim/slide_in_top"-->
+        <!--app:popExitAnim="@anim/slide_out_bot" />-->
         <action
             android:id="@+id/action_todayFragment_to_createWorkoutFragment"
-            app:destination="@id/createWorkoutFragment"
-            app:enterAnim="@anim/slide_in_bot"
-            app:exitAnim="@anim/slide_out_top"
-            app:popEnterAnim="@anim/slide_in_top"
-            app:popExitAnim="@anim/slide_out_bot" />
+            app:destination="@id/createWorkoutFragment" />
+        <!--app:enterAnim="@anim/slide_in_bot"-->
+        <!--app:exitAnim="@anim/slide_out_top"-->
+        <!--app:popEnterAnim="@anim/slide_in_top"-->
+        <!--app:popExitAnim="@anim/slide_out_bot" />-->
     </fragment>
     <fragment
         android:id="@+id/workoutFragment"
