@@ -35,7 +35,6 @@
             android:text="@string/start_workout"
             app:cornerRadius="@dimen/fab_corner_radius"
             app:icon="@drawable/ic_fitness_center_24dp"
-            app:iconTint="@color/primary"
             app:textAllCaps="false" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

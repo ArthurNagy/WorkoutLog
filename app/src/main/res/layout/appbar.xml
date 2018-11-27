@@ -11,11 +11,11 @@
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:collapsedTitleTextAppearance="@style/TitleTextAppearance"
+            app:collapsedTitleTextAppearance="@style/TextAppearanceH6"
             app:expandedTitleGravity="bottom"
             app:expandedTitleMarginBottom="@dimen/second_keyline"
             app:expandedTitleMarginStart="@dimen/first_keyline"
-            app:expandedTitleTextAppearance="@style/ExpandedTitleTextAppearance"
+            app:expandedTitleTextAppearance="@style/TextAppearanceH4"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <androidx.appcompat.widget.Toolbar
@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:titleTextAppearance="@style/TitleTextAppearance"
+                app:titleTextAppearance="@style/TextAppearanceH6"
                 tools:title="@string/title_today" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
