@@ -6,6 +6,10 @@ sealed class Result<out T> {
 }
 
 inline fun <T, R> Result<T>.map(crossinline transform: (T) -> R): Result<R> = when (this) {
-    is Result.Success<T> -> Result.Success(transform(this.value))
+    is Result.Success<T> -> try {
+        Result.Success(transform(this.value))
+    } catch (exception: Exception) {
+        Result.Error(exception)
+    }
     is Result.Error -> this
 }

@@ -5,5 +5,8 @@
     <string name="start_workout">Start workout</string>
     <string name="user_profile">User profile</string>
     <string name="profile">Profile</string>
+    <string name="sign_in_cancelled">Sign-in cancelled</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="unknown_error">Something went wrong</string>
 
 </resources>

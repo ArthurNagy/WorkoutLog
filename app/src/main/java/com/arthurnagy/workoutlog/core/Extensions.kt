@@ -1,8 +1,11 @@
 package com.arthurnagy.workoutlog.core
 
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.google.android.gms.tasks.Task
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.tasks.await
@@ -14,6 +17,8 @@ inline fun consumeOptionsItemSelected(block: () -> Unit): Boolean {
 }
 
 fun Fragment.requireAppCompatActivity() = this.requireActivity() as AppCompatActivity
+
+fun ViewDataBinding.showSnackbar(@StringRes message: Int) = Snackbar.make(this.root, message, Snackbar.LENGTH_LONG).show()
 
 inline fun <reified T> DocumentSnapshot.serialize(): T = toObject(T::class.java) ?: throw Exception("Couldn't serialize $this to ${T::class.java}")
 

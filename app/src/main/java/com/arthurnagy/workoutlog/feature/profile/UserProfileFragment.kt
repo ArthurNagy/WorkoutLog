@@ -10,14 +10,18 @@ import androidx.navigation.ui.NavigationUI
 import com.arthurnagy.workoutlog.R
 import com.arthurnagy.workoutlog.UserProfileBinding
 import com.arthurnagy.workoutlog.feature.WorkoutLogFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UserProfileFragment : WorkoutLogFragment() {
 
     private lateinit var binding: UserProfileBinding
+    private val viewModel by viewModel<UserProfileViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = UserProfileBinding.inflate(inflater)
         NavigationUI.setupWithNavController(binding.appbar.toolbar, findNavController())
+
+        binding.viewModel = viewModel
 
         binding.appbar.collapsingToolbar.title = getString(R.string.profile)
 
