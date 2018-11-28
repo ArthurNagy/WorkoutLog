@@ -35,8 +35,9 @@ class UserRemoteSource(
         }
     }
 
-    suspend fun getUser(): Result<User> = firebaseAuth.currentUser?.let {
-        userCollection.document(it.uid).get().awaitResult().map { it.serialize<User>() }
+    suspend fun getUser(): Result<User> = firebaseAuth.currentUser?.let { firebaseUser ->
+        userCollection.document(firebaseUser.uid).get().awaitResult()
+            .map { it.serialize<User>() }
     } ?: Result.Error(Exception("No logged in user"))
 
 }
