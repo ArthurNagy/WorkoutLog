@@ -1,7 +1,7 @@
 package com.arthurnagy.workoutlog.core.injection
 
 import android.content.Context
-import com.arthurnagy.workoutlog.core.AppDispatchers
+import com.arthurnagy.workoutlog.feature.shared.AppDispatchers
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions

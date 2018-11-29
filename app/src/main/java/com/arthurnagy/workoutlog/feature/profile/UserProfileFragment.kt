@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.arthurnagy.workoutlog.R
 import com.arthurnagy.workoutlog.UserProfileBinding
-import com.arthurnagy.workoutlog.feature.WorkoutLogFragment
+import com.arthurnagy.workoutlog.feature.shared.WorkoutLogFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UserProfileFragment : WorkoutLogFragment() {

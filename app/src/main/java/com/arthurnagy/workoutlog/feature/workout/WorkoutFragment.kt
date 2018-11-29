@@ -8,7 +8,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.arthurnagy.workoutlog.WorkoutBinding
-import com.arthurnagy.workoutlog.feature.WorkoutLogFragment
+import com.arthurnagy.workoutlog.feature.shared.WorkoutLogFragment
 
 class WorkoutFragment : WorkoutLogFragment() {
 

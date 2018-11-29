@@ -1,9 +1,9 @@
 package com.arthurnagy.workoutlog.feature.profile
 
-import com.arthurnagy.workoutlog.core.AppDispatchers
 import com.arthurnagy.workoutlog.core.Result
-import com.arthurnagy.workoutlog.core.WorkoutLogViewModel
 import com.arthurnagy.workoutlog.core.storage.user.UserRepository
+import com.arthurnagy.workoutlog.feature.shared.AppDispatchers
+import com.arthurnagy.workoutlog.feature.shared.WorkoutLogViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 

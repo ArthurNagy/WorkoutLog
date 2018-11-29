@@ -1,9 +1,8 @@
-package com.arthurnagy.workoutlog.feature
+package com.arthurnagy.workoutlog.feature.shared
 
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import com.arthurnagy.workoutlog.core.requireAppCompatActivity
 
 abstract class WorkoutLogFragment : Fragment() {
 

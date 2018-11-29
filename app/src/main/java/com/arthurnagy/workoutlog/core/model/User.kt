@@ -11,7 +11,7 @@ data class User(
     var weight: Float? = 0f,
     val profilePictureUrl: String = "",
     val activeRoutineId: Int = 0,
-    val routines: List<Routine> = emptyList()
+    val routines: List<Routine>? = emptyList()
 ) {
     companion object {
         const val REFERENCE = "users"

@@ -31,11 +31,12 @@
             android:layout_height="@dimen/text_fab_size"
             android:layout_gravity="bottom|center_horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="@dimen/content_margin"
+            android:layout_marginBottom="@dimen/first_keyline"
             android:text="@string/start_workout"
             app:cornerRadius="@dimen/fab_corner_radius"
             app:icon="@drawable/ic_fitness_center_24dp"
             app:textAllCaps="false" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

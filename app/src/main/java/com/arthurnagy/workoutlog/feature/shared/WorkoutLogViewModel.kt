@@ -1,4 +1,4 @@
-package com.arthurnagy.workoutlog.core
+package com.arthurnagy.workoutlog.feature.shared
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope

@@ -2,20 +2,21 @@ package com.arthurnagy.workoutlog.feature.today
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.arthurnagy.workoutlog.core.AppDispatchers
 import com.arthurnagy.workoutlog.core.Result
-import com.arthurnagy.workoutlog.core.WorkoutLogViewModel
 import com.arthurnagy.workoutlog.core.model.User
 import com.arthurnagy.workoutlog.core.storage.user.UserRepository
+import com.arthurnagy.workoutlog.feature.shared.AppDispatchers
+import com.arthurnagy.workoutlog.feature.shared.Event
+import com.arthurnagy.workoutlog.feature.shared.WorkoutLogViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.Calendar
+import java.util.*
 
 class TodayViewModel(dispatchers: AppDispatchers, private val userRepository: UserRepository) : WorkoutLogViewModel(dispatchers) {
 
     private val calendar = Calendar.getInstance()
-    private val _events = MutableLiveData<Event>()
-    val event: LiveData<Event> = _events
+    private val _events = MutableLiveData<Event<TodayView>>()
+    val event: LiveData<Event<TodayView>> = _events
 
     init {
 
@@ -25,8 +26,8 @@ class TodayViewModel(dispatchers: AppDispatchers, private val userRepository: Us
         launch {
             val userResult = withContext(dispatchers.io) { userRepository.getUser() }
             when (userResult) {
-                is Result.Success -> _events.value = Event.Profile(userResult.value)
-                is Result.Error -> _events.value = Event.SignIn
+                is Result.Success -> _events.value = Event(TodayView.Profile(userResult.value))
+                is Result.Error -> _events.value = Event(TodayView.SignIn)
             }
         }
     }
@@ -35,16 +36,16 @@ class TodayViewModel(dispatchers: AppDispatchers, private val userRepository: Us
         launch {
             val createUserResult = withContext(dispatchers.io) { userRepository.createUser() }
             when (createUserResult) {
-                is Result.Success -> _events.value = Event.Profile(createUserResult.value)
-                is Result.Error -> _events.value = Event.CreateUserError
+                is Result.Success -> _events.value = Event(TodayView.Profile(createUserResult.value))
+                is Result.Error -> _events.value = Event(TodayView.CreateUserError)
             }
         }
     }
 
-    sealed class Event {
-        data class Profile(val user: User) : Event()
-        object SignIn : Event()
-        object CreateUserError : Event()
+    sealed class TodayView {
+        data class Profile(val user: User) : TodayView()
+        object SignIn : TodayView()
+        object CreateUserError : TodayView()
     }
 
 }

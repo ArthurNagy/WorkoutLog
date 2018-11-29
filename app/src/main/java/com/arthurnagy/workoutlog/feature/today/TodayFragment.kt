@@ -3,21 +3,16 @@ package com.arthurnagy.workoutlog.feature.today
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.arthurnagy.workoutlog.R
 import com.arthurnagy.workoutlog.TodayBinding
-import com.arthurnagy.workoutlog.core.consumeOptionsItemSelected
-import com.arthurnagy.workoutlog.core.showSnackbar
-import com.arthurnagy.workoutlog.feature.WorkoutLogFragment
+import com.arthurnagy.workoutlog.feature.shared.WorkoutLogFragment
+import com.arthurnagy.workoutlog.feature.shared.consumeOptionsItemSelected
+import com.arthurnagy.workoutlog.feature.shared.showSnackbar
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.IdpResponse
@@ -39,16 +34,18 @@ class TodayFragment : WorkoutLogFragment() {
 
         binding.workoutButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_todayFragment_to_workoutFragment))
 
-        viewModel.event.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is TodayViewModel.Event.Profile -> findNavController().navigate(R.id.action_todayFragment_to_userProfileFragment)
-                is TodayViewModel.Event.SignIn -> startActivityForResult(
-                    AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setAvailableProviders(listOf(AuthUI.IdpConfig.GoogleBuilder().build()))
-                        .build(),
-                    RC_SIGN_IN
-                )
+        viewModel.event.observe(viewLifecycleOwner, Observer { event ->
+            event.consume()?.let {
+                when (it) {
+                    is TodayViewModel.TodayView.Profile -> findNavController().navigate(R.id.action_todayFragment_to_userProfileFragment)
+                    is TodayViewModel.TodayView.SignIn -> startActivityForResult(
+                        AuthUI.getInstance()
+                            .createSignInIntentBuilder()
+                            .setAvailableProviders(listOf(AuthUI.IdpConfig.GoogleBuilder().build()))
+                            .build(),
+                        RC_SIGN_IN
+                    )
+                }
             }
         })
 
