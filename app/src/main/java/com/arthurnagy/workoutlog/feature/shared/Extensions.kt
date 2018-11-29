@@ -1,8 +1,8 @@
 package com.arthurnagy.workoutlog.feature.shared
 
+import android.view.View
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
@@ -14,7 +14,7 @@ inline fun consumeOptionsItemSelected(block: () -> Unit): Boolean {
 
 fun Fragment.requireAppCompatActivity() = this.requireActivity() as AppCompatActivity
 
-fun ViewDataBinding.showSnackbar(@StringRes message: Int) = Snackbar.make(this.root, message, Snackbar.LENGTH_LONG).show()
+fun View.showSnackbar(@StringRes message: Int) = Snackbar.make(this, message, Snackbar.LENGTH_LONG).show()
 
 fun Calendar.dayOfWeek() = this.get(Calendar.DAY_OF_WEEK)
 

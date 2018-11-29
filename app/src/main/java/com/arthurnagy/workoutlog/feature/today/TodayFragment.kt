@@ -1,27 +1,26 @@
 package com.arthurnagy.workoutlog.feature.today
 
-import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.arthurnagy.workoutlog.R
 import com.arthurnagy.workoutlog.TodayBinding
+import com.arthurnagy.workoutlog.feature.SignIn
 import com.arthurnagy.workoutlog.feature.shared.WorkoutLogFragment
 import com.arthurnagy.workoutlog.feature.shared.consumeOptionsItemSelected
-import com.arthurnagy.workoutlog.feature.shared.showSnackbar
-import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.ErrorCodes
-import com.firebase.ui.auth.IdpResponse
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TodayFragment : WorkoutLogFragment() {
+class TodayFragment : WorkoutLogFragment(), SignIn {
 
     private lateinit var binding: TodayBinding
     private val viewModel by viewModel<TodayViewModel>()
+
+    override val signInHost: Fragment get() = this
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         setHasOptionsMenu(true)
@@ -38,13 +37,7 @@ class TodayFragment : WorkoutLogFragment() {
             event.consume()?.let {
                 when (it) {
                     is TodayViewModel.TodayView.Profile -> findNavController().navigate(R.id.action_todayFragment_to_userProfileFragment)
-                    is TodayViewModel.TodayView.SignIn -> startActivityForResult(
-                        AuthUI.getInstance()
-                            .createSignInIntentBuilder()
-                            .setAvailableProviders(listOf(AuthUI.IdpConfig.GoogleBuilder().build()))
-                            .build(),
-                        RC_SIGN_IN
-                    )
+                    is TodayViewModel.TodayView.SignIn -> signIn()
                 }
             }
         })
@@ -62,26 +55,13 @@ class TodayFragment : WorkoutLogFragment() {
         else -> super.onOptionsItemSelected(item)
     }
 
+    override fun onSignedIn() = viewModel.userSignedIn()
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RC_SIGN_IN) {
-            val response = IdpResponse.fromResultIntent(data)
-            if (resultCode == RESULT_OK) {
-                viewModel.userSignedIn()
-            } else {
-                when {
-                    response == null -> binding.showSnackbar(R.string.sign_in_cancelled)
-                    response.error?.errorCode == ErrorCodes.NO_NETWORK -> binding.showSnackbar(R.string.no_internet_connection)
-                    else -> binding.showSnackbar(R.string.unknown_error)
-                }
-            }
-        }
+        super<WorkoutLogFragment>.onActivityResult(requestCode, resultCode, data)
+        super<SignIn>.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun provideToolbar(): Toolbar = binding.appbar.toolbar
-
-    companion object {
-        private const val RC_SIGN_IN = 123
-    }
 
 }
