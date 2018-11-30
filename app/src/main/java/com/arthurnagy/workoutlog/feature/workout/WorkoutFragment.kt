@@ -1,23 +1,19 @@
 package com.arthurnagy.workoutlog.feature.workout
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
+import com.arthurnagy.workoutlog.R
 import com.arthurnagy.workoutlog.WorkoutBinding
 import com.arthurnagy.workoutlog.feature.shared.WorkoutLogFragment
+import com.arthurnagy.workoutlog.feature.shared.binding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class WorkoutFragment : WorkoutLogFragment() {
+class WorkoutFragment : WorkoutLogFragment<WorkoutBinding, WorkoutViewModel>() {
 
-    private lateinit var binding: WorkoutBinding
+    override val binding: WorkoutBinding by binding(R.layout.workout_fragment)
+    override val viewModel: WorkoutViewModel by viewModel()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = WorkoutBinding.inflate(inflater)
-        NavigationUI.setupWithNavController(binding.appbar.toolbar, findNavController())
-        return binding.root
+    override fun onCreateView() {
+
     }
 
     override fun provideToolbar(): Toolbar = binding.appbar.toolbar

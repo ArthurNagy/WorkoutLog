@@ -1,8 +1,9 @@
 package com.arthurnagy.workoutlog.feature.today
 
 import android.content.Intent
-import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -12,22 +13,17 @@ import com.arthurnagy.workoutlog.R
 import com.arthurnagy.workoutlog.TodayBinding
 import com.arthurnagy.workoutlog.feature.SignIn
 import com.arthurnagy.workoutlog.feature.shared.WorkoutLogFragment
+import com.arthurnagy.workoutlog.feature.shared.binding
 import com.arthurnagy.workoutlog.feature.shared.consumeOptionsItemSelected
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TodayFragment : WorkoutLogFragment(), SignIn {
+class TodayFragment : WorkoutLogFragment<TodayBinding, TodayViewModel>(), SignIn {
 
-    private lateinit var binding: TodayBinding
-    private val viewModel by viewModel<TodayViewModel>()
+    override val binding: TodayBinding by binding(R.layout.today_fragment)
+    override val viewModel: TodayViewModel by viewModel()
 
-    override val signInHost: Fragment get() = this
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView() {
         setHasOptionsMenu(true)
-        binding = TodayBinding.inflate(inflater)
-
-        binding.setLifecycleOwner(viewLifecycleOwner)
-        binding.viewModel = viewModel
 
         binding.appbar.collapsingToolbar.title = getString(R.string.title_today)
 
@@ -41,9 +37,9 @@ class TodayFragment : WorkoutLogFragment(), SignIn {
                 }
             }
         })
-
-        return binding.root
     }
+
+    override val signInHost: Fragment get() = this
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         inflater?.inflate(R.menu.today, menu)
