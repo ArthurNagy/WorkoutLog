@@ -1,6 +1,6 @@
 package com.arthurnagy.workoutlog.core.storage
 
-import me.arthurnagy.kotlincoroutines.Result
+import com.arthurnagy.workoutlog.core.Result
 
 abstract class DataRepository<K : Any, D : Any>(
     private val remoteSource: DataSource<K, D>,

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="TextAppearanceH3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/nunito_sans</item>
+    </style>
+
+    <style name="TextAppearanceH4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/nunito_sans</item>
+    </style>
+
     <style name="TextAppearanceH5" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="fontFamily">@font/nunito_sans</item>
     </style>

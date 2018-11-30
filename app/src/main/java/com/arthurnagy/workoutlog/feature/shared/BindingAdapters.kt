@@ -9,32 +9,31 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 
 @BindingAdapter("imageUrl")
-fun imageFromUrl(view: ImageView, imageUrl: String?) {
+fun ImageView.imageFromUrl(imageUrl: String?) {
     if (!imageUrl.isNullOrEmpty()) {
-        Glide.with(view.context)
+        Glide.with(context)
             .load(imageUrl)
             .transition(DrawableTransitionOptions.withCrossFade())
-            .into(view)
+            .into(this)
     }
 }
 
 @BindingAdapter("profileImageUrl")
-fun profileImageFromUrl(view: ImageView, imageUrl: String?) {
-    if (!imageUrl.isNullOrEmpty()) {
-        Glide.with(view.context)
-            .load(imageUrl)
-            .apply(RequestOptions.circleCropTransform())
-            .transition(DrawableTransitionOptions.withCrossFade())
-            .into(view)
-    }
+fun ImageView.profileImageFromUrl(imageUrl: String?) {
+    Glide.with(context)
+        .load(imageUrl)
+        .apply(RequestOptions.circleCropTransform())
+//        .apply(RequestOptions.placeholderOf(R.drawable.))
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .into(this)
 }
 
 @BindingAdapter("goneIf")
-fun goneIf(view: View, isGone: Boolean) {
-    view.visibility = if (isGone) View.GONE else View.VISIBLE
+fun View.goneIf(isGone: Boolean) {
+    visibility = if (isGone) View.GONE else View.VISIBLE
 }
 
 @BindingAdapter("goneIf")
-fun goneIf(constraintGroup: Group, isGone: Boolean) {
-    constraintGroup.visibility = if (isGone) View.GONE else View.VISIBLE
+fun Group.goneIf(isGone: Boolean) {
+    visibility = if (isGone) View.GONE else View.VISIBLE
 }
