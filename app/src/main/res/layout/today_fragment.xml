@@ -27,15 +27,15 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/workout_button"
+            style="@style/Widget.MaterialComponents.Button.Icon"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/text_fab_size"
             android:layout_gravity="bottom|center_horizontal"
-            android:gravity="center_vertical"
             android:layout_marginBottom="@dimen/first_keyline"
+            android:gravity="center_vertical"
             android:text="@string/start_workout"
             app:cornerRadius="@dimen/fab_corner_radius"
-            app:icon="@drawable/ic_fitness_center_24dp"
-            app:textAllCaps="false" />
+            app:icon="@drawable/ic_fitness_center_24dp" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

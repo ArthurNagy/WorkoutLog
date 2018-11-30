@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data class=".SignInButtonsBinding" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/first_keyline"
+        android:paddingEnd="@dimen/second_keyline"
+        android:gravity="end"
+        android:orientation="horizontal"
+        tools:ignore="RtlSymmetry">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/not_now"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/first_keyline"
+            android:text="@string/not_now" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_in" />
+
+    </LinearLayout>
+</layout>

@@ -20,8 +20,17 @@
         <item name="textAppearanceHeadline4">@style/TextAppearanceH4</item>
         <item name="textAppearanceHeadline5">@style/TextAppearanceH5</item>
         <item name="textAppearanceHeadline6">@style/TextAppearanceH6</item>
+
+        <item name="dialogCornerRadius">@dimen/first_keyline</item>
+
+        <item name="materialButtonStyle">@style/AppButton</item>
+
     </style>
 
     <style name="AppTheme" parent="BaseAppTheme" />
+
+    <style name="AppButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+    </style>
 
 </resources>
