@@ -41,12 +41,12 @@ class TodayFragment : WorkoutLogFragment<TodayBinding, TodayViewModel>(), SignIn
 
     override val signInHost: Fragment get() = this
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater?.inflate(R.menu.today, menu)
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.today, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?) = when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.user_profile -> consumeOptionsItemSelected { viewModel.userProfileSelected() }
         else -> super.onOptionsItemSelected(item)
     }

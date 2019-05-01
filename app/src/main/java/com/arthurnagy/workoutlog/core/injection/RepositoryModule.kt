@@ -17,28 +17,28 @@ import com.arthurnagy.workoutlog.core.storage.muscle.MuscleRemoteSource
 import com.arthurnagy.workoutlog.core.storage.muscle.MuscleRepository
 import com.arthurnagy.workoutlog.core.storage.user.UserRemoteSource
 import com.arthurnagy.workoutlog.core.storage.user.UserRepository
-import org.koin.dsl.module.module
-import org.koin.experimental.builder.single
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 
 val repositoryModule = module {
 
-    factory { CategoryRemoteSource(get(GenericData.CATEGORY_REFERENCE)) }
-    single<CategoryMemorySource>()
+    factory { CategoryRemoteSource(get(named(GenericData.CATEGORY_REFERENCE))) }
+    single { CategoryMemorySource() }
     factory { CategoryRepository(get(), get()) }
 
-    factory { EquipmentRemoteSource(get(GenericData.EQUIPMENT_REFERENCE)) }
-    single<EquipmentMemorySource>()
+    factory { EquipmentRemoteSource(get(named(GenericData.EQUIPMENT_REFERENCE))) }
+    single { EquipmentMemorySource() }
     factory { EquipmentRepository(get(), get()) }
 
-    factory { ExerciseRemoteSource(get(Exercise.REFERENCE)) }
-    single<ExerciseMemorySource>()
+    factory { ExerciseRemoteSource(get(named(Exercise.REFERENCE))) }
+    single { ExerciseMemorySource() }
     factory { ExerciseRepository(get(), get()) }
 
-    factory { MuscleRemoteSource(get(GenericData.MUSCLE_REFERENCE)) }
-    single<MuscleMemorySource>()
+    factory { MuscleRemoteSource(get(named(GenericData.MUSCLE_REFERENCE))) }
+    single { MuscleMemorySource() }
     factory { MuscleRepository(get(), get()) }
 
-    factory { UserRemoteSource(get(), get(User.REFERENCE)) }
+    factory { UserRemoteSource(get(), get(named(User.REFERENCE))) }
     single { UserRepository(get()) }
 
 }

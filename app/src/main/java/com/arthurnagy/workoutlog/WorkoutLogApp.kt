@@ -8,13 +8,17 @@ import com.arthurnagy.workoutlog.feature.create.createWorkoutModule
 import com.arthurnagy.workoutlog.feature.profile.userProfileModule
 import com.arthurnagy.workoutlog.feature.today.todayModule
 import com.arthurnagy.workoutlog.feature.workout.workoutModule
-import org.koin.android.ext.android.startKoin
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 class WorkoutLogApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        startKoin(this, listOf(appModule, dbModule, repositoryModule, todayModule, userProfileModule, workoutModule, createWorkoutModule))
+        startKoin {
+            androidContext(this@WorkoutLogApp)
+            modules(appModule, dbModule, repositoryModule, todayModule, userProfileModule, workoutModule, createWorkoutModule)
+        }
     }
 
 }

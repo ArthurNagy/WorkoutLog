@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs"
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     buildToolsVersion rootProject.build_tools
@@ -26,7 +26,7 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     dataBinding {
@@ -42,24 +42,24 @@ kapt {
 }
 
 ext {
-    lifecycle = '2.0.0'
-    koin = "1.0.2"
-    glide = "4.8.0"
-    coroutines = '1.0.0'
+    lifecycle = '2.1.0-alpha04'
+    koin = "2.0.0-rc-2"
+    glide = "4.9.0"
+    coroutines = '1.2.1'
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.3.31"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutines"
 
     // Support Libraries
-    implementation "androidx.appcompat:appcompat:1.0.2"
-    implementation "androidx.core:core-ktx:1.0.1"
-    implementation "androidx.recyclerview:recyclerview:1.0.0"
-    implementation "com.google.android.material:material:1.0.0"
-    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
+    implementation 'androidx.core:core-ktx:1.1.0-alpha05'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha04'
+    implementation 'com.google.android.material:material:1.1.0-alpha05'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha5'
 
     // Architecture components
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
@@ -67,18 +67,16 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle"
 
     // Navigation Arch Component
-    implementation "android.arch.navigation:navigation-fragment:$navigation_arch"
-    implementation "android.arch.navigation:navigation-fragment-ktx:$navigation_arch"
-    implementation "android.arch.navigation:navigation-ui:$navigation_arch"
-    implementation "android.arch.navigation:navigation-ui-ktx:$navigation_arch"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation"
 
     // Firebase
-    implementation 'com.google.firebase:firebase-core:16.0.6'
-    implementation 'com.google.firebase:firebase-firestore:17.1.4'
-    implementation "com.google.firebase:firebase-auth:16.1.0"
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.google.firebase:firebase-firestore:18.2.0'
+    implementation "com.google.firebase:firebase-auth:16.2.1"
     implementation "com.google.android.gms:play-services-auth:16.0.1"
 
-    implementation 'com.firebaseui:firebase-ui-auth:4.2.1'
+    implementation 'com.firebaseui:firebase-ui-auth:4.3.2'
 
     // Koin
     implementation "org.koin:koin-android:$koin"

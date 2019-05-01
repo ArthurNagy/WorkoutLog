@@ -1,7 +1,7 @@
 package com.arthurnagy.workoutlog.feature.workout
 
-import org.koin.androidx.viewmodel.ext.koin.viewModel
-import org.koin.dsl.module.module
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 
 val workoutModule = module {
     viewModel { WorkoutViewModel(get()) }

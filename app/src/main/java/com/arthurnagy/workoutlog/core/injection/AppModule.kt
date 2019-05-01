@@ -7,7 +7,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
-import org.koin.dsl.module.module
+import org.koin.dsl.module
 
 val appModule = module {
 
